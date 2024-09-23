@@ -3,9 +3,9 @@ header {
    text-align: center; 
    padding: 20px;
    color: #FFFFFF;
-   background-color: #000000;
+   background-color: #1e1e1e;
    font-size: 2vw;
-   font-family: sans-serif;
+   font-family: Helvetica;
 }
 /*creating the two-column layout*/
 *{
@@ -18,10 +18,10 @@ nav {
    font-size: medium;
    font-size: 2vw;
    Padding: 10px;
-   background-color: #FFFFFF;
-   font-family: sans-serif;
-   color: #000000;
-   accent-color: #000000;
+   background-color: #1e1e1e;
+   font-family: Helvetica;
+   color: #FFFFFF;
+   accent-color: #FFFFFF;
 }
 /*main style*/
 main {
@@ -31,9 +31,9 @@ main {
    Padding: 2px;
    font-size: smaller;
    font-size: 2vw;
-   color: #ffffff;
-   background-color: #000000;
-   font-family: sans-serif;
+   color: #FFFFFF;
+   background-color: #1e1e1e;
+   font-family: Helvetica;
 }
 /*body style*/
 body {
@@ -43,8 +43,8 @@ body {
    font-size:medium;
    font-size: 2vw;
    padding: 10px;
-   background-color: #000000;
-   font-family: sans-serif;
+   background-color: #1e1e1e;
+   font-family: Helvetica;
 }
 /*alert style*/
 alert {
@@ -54,13 +54,13 @@ alert {
    font-size:medium;
    font-size: 2vw;
    padding: 10px;
-   background-color: #000000;
-   font-family: sans-serif;
+   background-color: #1e1e1e;
+   font-family: Helvetica;
 }
    /*navigation bar button style*/
 }
 nav a {
-   color: #000000;
+   color: #FFFFFF;
    text-decoration: none;
    font-size: larger;
    font-size: 2vw;
@@ -79,6 +79,6 @@ footer {
    font-size: smaller;
    font-size: 2vw;
    padding: 20px;
-   color: #000000;
-   font-family: sans-serif;
+   color: #FFFFFF;
+   font-family: Helvetica;
 }
