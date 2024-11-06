@@ -3,13 +3,19 @@ header {
    text-align: center; 
    padding: 20px;
    color: #FFFFFF;
-   background-color: #1e1e1e;
+   background-color: #1b1b1b;
    font-size: 2vw;
    font-family: Helvetica;
 }
 /*creating the two-column layout*/
 *{
    box-sizing: border-box;
+}
+.responsive {
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  max-height: 300px;
 }
 /*navigation menu style*/
 nav {
@@ -18,7 +24,7 @@ nav {
    font-size: medium;
    font-size: 2vw;
    Padding: 10px;
-   background-color: #1e1e1e;
+   background-color: #1b1b1b;
    font-family: Helvetica;
    color: #FFFFFF;
    accent-color: #FFFFFF;
@@ -32,7 +38,7 @@ main {
    font-size: smaller;
    font-size: 2vw;
    color: #FFFFFF;
-   background-color: #1e1e1e;
+   background-color: #1b1b1b;
    font-family: Helvetica;
 }
 /*body style*/
@@ -43,7 +49,7 @@ body {
    font-size:medium;
    font-size: 2vw;
    padding: 10px;
-   background-color: #1e1e1e;
+   background-color: #1b1b1b;
    font-family: Helvetica;
 }
 /*alert style*/
@@ -54,7 +60,7 @@ alert {
    font-size:medium;
    font-size: 2vw;
    padding: 10px;
-   background-color: #1e1e1e;
+   background-color: #1b1b1b;
    font-family: Helvetica;
 }
    /*navigation bar button style*/
@@ -66,7 +72,7 @@ nav a {
    font-size: 2vw;
 }
 a {
-   color: #add8e6;
+   color: #efd153;
 }
 .profile h1 {
    text-align: center;
@@ -81,4 +87,20 @@ footer {
    padding: 20px;
    color: #FFFFFF;
    font-family: Helvetica;
+
+#mydiv {
+  position: absolute;
+  z-index: 9;
+  background-color: #f1f1f1;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+}
+
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  background-color: #2196F3;
+  color: #fff;
+}
 }
