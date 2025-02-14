@@ -136,4 +136,26 @@ footer {
   background-color: #2196F3;
   color: #fff;
 }
-}
+
+@media only screen and (max-width: 700px) {
+  body {
+    font-size: 4vw;
+  }
+  h1 {
+   font-size: 6vw;
+  }
+  nav a {
+   font-size: 4vw;
+  }
+  a {
+   font-size: 4vw;
+  }
+  main {
+   font-size: 4vw;
+  }
+  article {
+   font-size: 4vw;
+  }
+  header {
+   font-size: 4vw;
+  }
