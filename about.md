@@ -1,0 +1,12 @@
+---
+layout: page
+title: about
+permalink: /about/
+---
+
+<h3>
+	<p>THE LONDON COMMUNITY LAPTOP ORCHESTRA IS A COMMUNITY RUN LAPTOP ORCHESTRA FOR LONDON FRIENDS TO MAKE SOUNDS IN A VARIETY OF UNUSUAL PLACES. THE LCLO HOLDS A COMMUNITY ETHOS WHERE <mark>ANYONE</mark> CAN PARTICIPATE.</p>
+	<p>OUR POLITICS ARE EXPLICIT BECAUSE THEY NEED TO BE. SOUND ART SPACES CAN BE SEXIST, HOMOPHOBIC, RACIST AND FACIST. WE AIM TO BE ACTIVE IN BREAKING THOSE STEREOTYPES.</p>
+	<p>FOUNDED AND (CURRENTLY) RUN BY <a href="https://otherkat.com/">KAT MACDONALD.</a></p>
+
+<a href="/"><img src="/assets/img/logo/lclolapfriend.gif" width="200px" max-width="auto" height="200px" max-height="auto" ALIGN="center"/>

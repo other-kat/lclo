@@ -1,0 +1,131 @@
+@charset "utf-8";
+
+@font-face { font-family: Cotham; src: url('CothamSans.otf'); } 
+ @font-face { font-family: Cotham; font-weight: bold; src: url('CothamSans.otf');}
+
+ @font-face { font-family: Bagnard; src: url('BagnardSans.otf'); } 
+ @font-face { font-family: Bagnard; font-weight: bold; src: url('BagnardSans.otf');}
+
+@font-face { font-family: Work-Regular; src: url('WorkSans-Regular.otf'); } 
+ @font-face { font-family: Work-Regular; font-weight: bold; src: url('WorkSans-Regular.otf');}
+
+main {
+   margin-left: 5px;
+   Padding: 2px;
+}
+header {
+   position: sticky;
+   top: 0;
+   word-spacing: 30px;
+   text-align: left; 
+   font-size: smaller;
+   font-size: 2vw;
+   padding: 2px;
+   margin: 2px;
+}
+body {
+   margin-left: 5px;
+   padding: 10px;
+}
+nav a {
+   color: #FFFFFF;
+   text-decoration: none;
+   font-size: larger;
+   font-size: 2vw;
+}
+   a:hover {
+    color:#ff0000;
+    text-shadow: 0 0 1vw white;
+    text-
+}
+a {
+   color: #ff0000;
+}
+.profile h1 {
+   text-align: center;
+   background-color: #CCCCCC;
+   color: #FFFFFF;
+   font-size: 2vw;
+}
+footer {
+   text-align: left; 
+   font-size: smaller;
+   font-size: 2vw;
+   padding: 20px;
+   color: #1e1e1e;
+}
+article {
+   text-align: left;
+   margin-left: 5px;
+   word-spacing: 5px;
+   Padding: 2px;
+   font-size: smaller;
+   font-size: 2vw;
+}
+.dark-mode {
+   color: #FFFFFF;
+   background-color: #1e1e1e;
+}
+imageContainer {
+   position: fixed;
+   max-height: 40vh;
+   top: 100px;
+   left: 50vw;
+}
+
+:root {
+   font-family: Helvetica;
+   color: #1e1e1e;
+   background-color: #CCCCCC;
+}
+.dark-mode {
+   color: #FFFFFF;
+   background-color: #1e1e1e;
+}
+
+@media (prefers-color-scheme: dark) {
+   :root {
+   color: #FFFFFF;
+   background-color: #1e1e1e;
+   }
+   a {
+      color: #a4dd00;
+   }
+   nav a {
+   color: #FFFFFF;
+   text-decoration: none;
+   font-size: larger;
+   font-size: 2vw;
+}
+   a:hover {
+    color:#a4dd00;
+    text-shadow: 0 0 1vw white;
+    text-
+}
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+    font-size: 4vw;
+  }
+  h1 {
+   font-size: 6vw;
+  }
+  nav a {
+   font-size: 4vw;
+  }
+  a {
+   font-size: 4vw;
+  }
+  main {
+   font-size: 4vw;
+  }
+  article {
+   font-size: 4vw;
+  }
+  header {
+   text-align: center;
+   font-size: 4vw;
+   background-color: #CCCCCC;
+}
+  }

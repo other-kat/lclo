@@ -1,0 +1,66 @@
+/*main style*/
+main {
+  text-align: left;
+  margin-left: 5px;
+  word-spacing: 5px;
+  Padding: 2px;
+  font-size: smaller;
+  font-size: 2vw;
+  color: #FFFFFF;
+  background-color: #1e1e1e;
+  font-family: Helvetica;
+}
+
+/*body style*/
+body {
+  text-align: left;
+  word-spacing: 30px;
+  margin-left: 5px;
+  font-size: medium;
+  font-size: 2vw;
+  padding: 10px;
+  background-color: #1e1e1e;
+  font-family: Helvetica;
+}
+
+/*navigation bar button style*/
+nav a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: larger;
+  font-size: 2vw;
+}
+
+a {
+  color: #add8e6;
+}
+
+.profile h1 {
+  text-align: center;
+  background-color: #f5f5dc;
+  font-size: 5vw;
+}
+
+/*footer style*/
+footer {
+  text-align: left;
+  font-size: smaller;
+  font-size: 2vw;
+  padding: 20px;
+  color: #FFFFFF;
+  font-family: Helvetica;
+}
+
+article {
+  text-align: left;
+  margin-left: 5px;
+  word-spacing: 5px;
+  Padding: 2px;
+  font-size: smaller;
+  font-size: 2vw;
+  color: #FFFFFF;
+  background-color: #1e1e1e;
+  font-family: Helvetica;
+}
+
+/*# sourceMappingURL=main.css.map */
