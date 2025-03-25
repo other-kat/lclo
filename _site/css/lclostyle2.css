@@ -1,0 +1,155 @@
+@charset "utf-8";
+
+@font-face { font-family: Cotham; src: url('CothamSans.otf'); } 
+ @font-face { font-family: Cotham; font-weight: bold; src: url('CothamSans.otf');}
+
+ @font-face { font-family: Bagnard; src: url('BagnardSans.otf'); } 
+ @font-face { font-family: Bagnard; font-weight: bold; src: url('BagnardSans.otf');}
+
+@font-face { font-family: Work-Regular; src: url('WorkSans-Regular.otf'); } 
+ @font-face { font-family: Work-Regular; font-weight: bold; src: url('WorkSans-Regular.otf');}
+
+/*header style*/
+header {
+   text-align: center; 
+   padding: 20px;
+   color: #FFFFFF;
+   font-size: 2vw;
+}
+.responsive {
+  width: 100%;
+  max-width: 300px;
+  height: 100%;
+  max-height: 300px;
+}
+/*navigation menu style*/
+nav {
+   text-align: center;
+   word-spacing: 30px;
+   font-size: medium;
+   font-size: 2vw;
+   Padding: 10px;
+   color: #FFFFFF;
+   accent-color: #FFFFFF;
+}
+main {
+   text-align: center;
+   margin-left: 5px;
+   word-spacing: 5px;
+   Padding: 2px;
+   font-size: smaller;
+   font-size: 7vw;
+   color: #FFFFFF;
+}
+h2 {
+   text-align: center;
+   margin-left: 5px;
+   word-spacing: 5px;
+   Padding: 2px;
+   font-size: larger;
+   font-size: 7vw;
+   color: #FFFFFF;
+}
+h3 {
+   text-align: center;
+   margin-left: 5px;
+   word-spacing: 5px;
+   Padding: 2px;
+   font-size: larger;
+   font-size: 7vw;
+   color: #FFFFFF;
+}
+h4 {
+   text-align: center;
+   margin-left: 5px;
+   word-spacing: 5px;
+   Padding: 2px;
+   font-size: larger;
+   font-size: 7vw;
+   color: #FFFFFF;
+}
+body {
+   text-align: center;
+   word-spacing: 30px;
+   margin-left: 5px;
+   font-size:medium;
+   font-size: 7vw;
+   padding: 10px;
+}
+article {
+   text-align: center;
+   word-spacing: 30px;
+   margin-left: 5px;
+   font-size:medium;
+   font-size: 7vw;
+   padding: 10px;
+}
+a {
+   color: #efd153;
+}
+a:hover {
+    color:#FFFFFF;
+    text-shadow: 0 0 1vw efd153;
+    text-
+}
+.profile h1 {
+   text-align: center;
+   font-size: 7vw;
+}
+/*footer style*/
+footer {
+   text-align: left; 
+   font-size: smaller;
+   font-size: 2vw;
+   padding: 20px;
+   color: #FFFFFF;
+}
+.responsive {
+  flex: 0 0 auto;
+  align-content: center;
+  max-width: 30vw;
+  display: flex;
+  align-items: center; /* Centers logo content */
+}
+.responsive img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+#mydiv {
+  position: absolute;
+  z-index: 9;
+  border: 1px solid #d3d3d3;
+  text-align: center;
+}
+
+#mydivheader {
+  padding: 10px;
+  cursor: move;
+  z-index: 10;
+  color: #fff;
+}
+
+:root {
+   font-family: Cotham;
+   color: #1e1e1e;
+   background-color: #1b1b1b;
+}
+
+@media only screen and (max-width: 700px) {
+  body {
+    font-size: 7vw;
+  }
+  h1 {
+   font-size: 7vw;
+  }
+  main {
+   font-size: 7vw;
+  }
+  article {
+   font-size: 7vw;
+  }
+  img {
+    max-width:50%;
+}
+}
