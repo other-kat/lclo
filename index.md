@@ -26,7 +26,7 @@ layout: home
    <section id="ABOUT" class="section">
       <h2>ABOUT</h2>
       <article>
-      	<p>WE ARE THE A LONDON COMMUNITY BASED LAPTOP ORCHESTRA, OPEN TO ANYONE WHO'S INTERESTED. NO EXPERIENCE REQUEST. ONLY A LAPTOP.</p>
+      	<p>WE ARE A COMMUNITY BASED LAPTOP ORCHESTRA, OPEN TO ANYONE WHO'S INTERESTED. NO EXPERIENCE REQUIRED. ONLY A LAPTOP.</p>
       	<p><a href="/about/">MORE</a></p>
       </article>
     </section>

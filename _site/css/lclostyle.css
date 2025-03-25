@@ -47,7 +47,7 @@ h2 {
    word-spacing: 5px;
    Padding: 2px;
    font-size: larger;
-   font-size: 4vw;
+   font-size: 5vw;
    color: #FFFFFF;
 }
 h3 {
@@ -56,7 +56,7 @@ h3 {
    word-spacing: 5px;
    Padding: 2px;
    font-size: larger;
-   font-size: 6vw;
+   font-size: 7vw;
    color: #FFFFFF;
 }
 h4 {
@@ -73,7 +73,15 @@ body {
    word-spacing: 30px;
    margin-left: 5px;
    font-size:medium;
-   font-size: 2vw;
+   font-size: 3vw;
+   padding: 10px;
+}
+article {
+   text-align: center;
+   word-spacing: 30px;
+   margin-left: 5px;
+   font-size:medium;
+   font-size: 3vw;
    padding: 10px;
 }
 a {
