@@ -48,7 +48,18 @@ layout: home
       <p>WHATSAPP <a href="https://chat.whatsapp.com/EXVoMvmAwFSIWxQ8vN5OXa">CHAT WITH US</a></p>
       <p>ARE.NA <a href="https://www.are.na/kat-macdonald/london_community_laptop_orchestra">ADD TO OUR BOARD</a></p>
       <p>INSTAGRAM <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">UPDATES</a></p>
-      <p>EMAIL <a href="londoncommunitylaptoporchestra@protonmail.com">LONDONCOMMUNITYLAPTOPORCHESTRA@PROTONMAIL.COM</a></p>
+      <p><a href="londoncommunitylaptoporchestra@protonmail.com">EMAIL</a></p>
+      <form
+  action="https://buttondown.com/api/emails/embed-subscribe/londoncommunitylaptoporchestra"
+  method="post"
+  target="popupwindow"
+  onsubmit="window.open('https://buttondown.com/londoncommunitylaptoporchestra', 'popupwindow')"
+  class="embeddable-buttondown-form"
+>
+  <div style="margin-top: 2rem;">MAILING LIST</div>
+  <div style="margin-top: 2rem;"><input type="email" name="email" id="bd-email" style="width: 100%;font-size: 2rem;"/></div>
+  <div style="margin-top: 2rem;"><input type="submit" value="Subscribe" style="padding: 0.75rem 1.25rem; font-size: 2rem;"/></div>
+</form>
     </section>
   </main>
   <p>___________________</p>
