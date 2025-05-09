@@ -1,5 +1,7 @@
 ---
 layout: nokia
+title: ringtoneworkshop
+permalink: /ringtoneworkshop/
 ---
 
 <main>
