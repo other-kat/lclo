@@ -7,7 +7,7 @@ permalink: /ringtoneworkshop/
 <main>
 
    <section id="ABOUT" class="section">
-    <p>____________________</p>
+    <p>_________</p>
       <h2>all you need is a snack, a computer and a dream</h2>
       <img src="/assets/img/logo/nokialogo.png" width="100%" height="auto">
       <article>
@@ -16,7 +16,7 @@ permalink: /ringtoneworkshop/
     </section>
 
 <section id="LCLO" class="section">
-      <p>____________________</p>
+      <p>_________</p>
       <h2>London Community Laptop Orchestra</h2>
       <article>
         <p>we are a community based laptop orchestra, open to anyone who's interested. no experience required. only a laptop.</p>
@@ -25,7 +25,7 @@ permalink: /ringtoneworkshop/
     </section>
 
    <section id="contact" class="section">
-    <p>____________________</p>
+    <p>_________</p>
       <h2>Contact</h2>
       <p>whatsapp <a href="https://chat.whatsapp.com/EXVoMvmAwFSIWxQ8vN5OXa">chat with us : )</a></p>
       <p>are.na <a href="https://www.are.na/kat-macdonald/london_community_laptop_orchestra">add to our board</a></p>
@@ -33,4 +33,4 @@ permalink: /ringtoneworkshop/
       <p><a href="londoncommunitylaptoporchestra@protonmail.com">email</a></p>
     </section>
   </main>
-  <p>___________________</p>
+  <p>_________</p>
