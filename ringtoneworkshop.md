@@ -30,7 +30,7 @@ permalink: /ringtoneworkshop/
       <p>whatsapp <a href="https://chat.whatsapp.com/EXVoMvmAwFSIWxQ8vN5OXa">chat with us : )</a></p>
       <p>are.na <a href="https://www.are.na/kat-macdonald/london_community_laptop_orchestra">add to our board</a></p>
       <p>instagram <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">updates</a></p>
-      <p>email <a href="londoncommunitylaptoporchestra@protonmail.com">londoncommunitylaptoporchestra@protonmail.com</a></p>
+      <p><a href="londoncommunitylaptoporchestra@protonmail.com">email</a></p>
     </section>
   </main>
   <p>___________________</p>

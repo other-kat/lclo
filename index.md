@@ -67,7 +67,7 @@ layout: home
       <p>WHATSAPP <a href="https://chat.whatsapp.com/EXVoMvmAwFSIWxQ8vN5OXa">CHAT WITH US</a></p>
       <p>ARE.NA <a href="https://www.are.na/kat-macdonald/london_community_laptop_orchestra">ADD TO OUR BOARD</a></p>
       <p>INSTAGRAM <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">UPDATES</a></p>
-      <p>EMAIL <a href="londoncommunitylaptoporchestra@protonmail.com">LONDONCOMMUNITYLAPTOPORCHESTRA@PROTONMAIL.COM</a></p>
+      <p><a href="londoncommunitylaptoporchestra@protonmail.com">EMAIL</a></p>
       <form
   action="https://buttondown.com/api/emails/embed-subscribe/londoncommunitylaptoporchestra"
   method="post"
