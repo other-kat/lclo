@@ -1,19 +1,13 @@
 @charset "utf-8";
 
-@font-face { font-family: Cotham; src: url('CothamSans.otf'); } 
- @font-face { font-family: Cotham; font-weight: bold; src: url('CothamSans.otf');}
-
- @font-face { font-family: Bagnard; src: url('BagnardSans.otf'); } 
- @font-face { font-family: Bagnard; font-weight: bold; src: url('BagnardSans.otf');}
-
-@font-face { font-family: Work-Regular; src: url('WorkSans-Regular.otf'); } 
- @font-face { font-family: Work-Regular; font-weight: bold; src: url('WorkSans-Regular.otf');}
+@font-face { font-family: nokiafc22; src: url('nokiafc22.ttf'); } 
+ @font-face { font-family: nokiafc22; font-weight: bold; src: url('nokiafc22.ttf');}
 
 /*header style*/
 header {
    text-align: center; 
    padding: 20px;
-   color: #FFFFFF;
+   color: #000000;
    font-size: 2vw;
 }
 .responsive {
@@ -29,7 +23,7 @@ nav {
    font-size: medium;
    font-size: 2vw;
    Padding: 10px;
-   color: #FFFFFF;
+   color: #000000;
    accent-color: #FFFFFF;
 }
 main {
@@ -39,7 +33,7 @@ main {
    Padding: 2px;
    font-size: smaller;
    font-size: 5vw;
-   color: #FFFFFF;
+   color: #000000;
 }
 h2 {
    text-align: center;
@@ -48,7 +42,7 @@ h2 {
    Padding: 2px;
    font-size: larger;
    font-size: 5vw;
-   color: #FFFFFF;
+   color: #000000;
 }
 h3 {
    text-align: center;
@@ -57,7 +51,7 @@ h3 {
    Padding: 2px;
    font-size: larger;
    font-size: 5vw;
-   color: #FFFFFF;
+   color: #000000;
 }
 h4 {
    text-align: center;
@@ -66,7 +60,7 @@ h4 {
    Padding: 2px;
    font-size: larger;
    font-size: 5vw;
-   color: #FFFFFF;
+   color: #000000;
 }
 body {
    text-align: center;
@@ -85,11 +79,11 @@ article {
    padding: 10px;
 }
 a {
-   color: #efd153;
+   color: #b6ffca;
 }
 a:hover {
-    color:#FFFFFF;
-    text-shadow: 0 0 1vw efd153;
+    color:#000000;
+    text-shadow: 0 0 1vw b6ffca;
     text-
 }
 .profile h1 {
@@ -102,29 +96,7 @@ footer {
    font-size: smaller;
    font-size: 5vw;
    padding: 20px;
-   color: #FFFFFF;
-}
-.accordion {
-  cursor: pointer;
-  font-family: Cotham;
-   color: #FFFFFF;
-   font-size: 5vw;
-  padding: 18px;
-  width: 100%;
-  border: none;
-  outline: none;
-  transition: 0.4s;
-  background-color: rgba(255, 255, 255, 0);
-}
-.active, .accordion:hover {
-  background-color: #FFFFFF;
-  color:#000000;
-}
-.panel {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+   color: #000000;
 }
 .responsive {
   flex: 0 0 auto;
@@ -153,9 +125,9 @@ footer {
 }
 
 :root {
-   font-family: Cotham;
-   color: #1e1e1e;
-   background-color: #1b1b1b;
+   font-family: nokiafc22;
+   color: #000000;
+   background-color: #84ae90;
 }
 
 @media only screen and (max-width: 700px) {
@@ -163,18 +135,6 @@ footer {
     font-size: 7vw;
   }
   h1 {
-   font-size: 7vw;
-  }
-  h2 {
-   font-size: 7vw;
-  }
-  h3 {
-   font-size: 7vw;
-  }
-  h4 {
-   font-size: 7vw;
-  }
-  .accordion {
    font-size: 7vw;
   }
   main {

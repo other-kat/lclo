@@ -38,7 +38,7 @@ main {
    word-spacing: 5px;
    Padding: 2px;
    font-size: smaller;
-   font-size: 7vw;
+   font-size: 5vw;
    color: #FFFFFF;
 }
 h2 {
@@ -47,7 +47,7 @@ h2 {
    word-spacing: 5px;
    Padding: 2px;
    font-size: larger;
-   font-size: 7vw;
+   font-size: 5vw;
    color: #FFFFFF;
 }
 h3 {
@@ -56,7 +56,7 @@ h3 {
    word-spacing: 5px;
    Padding: 2px;
    font-size: larger;
-   font-size: 7vw;
+   font-size: 5vw;
    color: #FFFFFF;
 }
 h4 {
@@ -65,7 +65,7 @@ h4 {
    word-spacing: 5px;
    Padding: 2px;
    font-size: larger;
-   font-size: 7vw;
+   font-size: 5vw;
    color: #FFFFFF;
 }
 body {
@@ -73,7 +73,7 @@ body {
    word-spacing: 30px;
    margin-left: 5px;
    font-size:medium;
-   font-size: 7vw;
+   font-size: 5vw;
    padding: 10px;
 }
 article {
@@ -81,7 +81,7 @@ article {
    word-spacing: 30px;
    margin-left: 5px;
    font-size:medium;
-   font-size: 7vw;
+   font-size: 5vw;
    padding: 10px;
 }
 a {
@@ -94,15 +94,37 @@ a:hover {
 }
 .profile h1 {
    text-align: center;
-   font-size: 7vw;
+   font-size: 5vw;
 }
 /*footer style*/
 footer {
    text-align: left; 
    font-size: smaller;
-   font-size: 2vw;
+   font-size: 5vw;
    padding: 20px;
    color: #FFFFFF;
+}
+.accordion {
+  cursor: pointer;
+  font-family: Cotham;
+   color: #FFFFFF;
+   font-size: 5vw;
+  padding: 18px;
+  width: 100%;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  background-color: rgba(255, 255, 255, 0);
+}
+.active, .accordion:hover {
+  background-color: #FFFFFF;
+  color:#000000;
+}
+.panel {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.2s ease-out;
 }
 .responsive {
   flex: 0 0 auto;
@@ -141,6 +163,18 @@ footer {
     font-size: 7vw;
   }
   h1 {
+   font-size: 7vw;
+  }
+  h2 {
+   font-size: 7vw;
+  }
+  h3 {
+   font-size: 7vw;
+  }
+  h4 {
+   font-size: 7vw;
+  }
+  .accordion {
    font-size: 7vw;
   }
   main {
