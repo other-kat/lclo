@@ -1,0 +1,60 @@
+---
+layout: home
+---
+
+<main>
+  <p>___________________</p>
+   <p>OFFICIAL RINGTONE PACK</p>
+   <p><img src="/assets/img/logo/ringtonelogo.png/" width="30%" height="100%"></p>
+   <p>
+
+<section id="RINGTONES" class="section">
+      <button class="accordion">RINGTONES</button>
+<div class="panel">
+      <article>
+         <p><audio controls>
+           <source src="/assets/sound/ringtone.lib/lcloringring.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+  </audio></p>
+  <p><audio controls>
+  <source src="/assets/sound/ringtone.lib/lclobirdsong.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+  </audio></p>
+      </article>
+      <p>___________________</p>
+    </div>
+    </section>
+
+<section id="TEXTTONES" class="section">
+    <button class="accordion">TEXTTONES</button>
+<div class="panel">
+      <article>
+         <p><audio controls>
+           <source src="/assets/sound/ringtone.lib/lclochrip.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+  </audio></p>
+  <p><audio controls>
+  <source src="/assets/sound/ringtone.lib/lclosquiggle.mp3" type="audio/mpeg">
+Your browser does not support the audio element.
+  </audio></p>
+      </article>
+  <p>___________________</p>
+  </div>
+    </section>
+
+  <script>
+    var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight) {
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    }
+  });
+}
+</script>

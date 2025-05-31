@@ -43,9 +43,12 @@ layout: home
     <button class="accordion">EVENTS</button>
 <div class="panel">
       <ul>
-      <li>RINGTONE WORKSHOP - 20/05 19:00-21:00 <a href="/ringtoneworkshop/">LINK</a></li>
+      <li>PECKHAM CHAMBER ORCHESTRA SUMMER CONCERT - 09/06 19:00-21:00 <a href="https://peckhamchamberorchestra.co.uk/">LINK</a></li>
       </ul>
-  <a href="/assets/img/posters/ringtoneworkshop.png"><img src="/assets/img/posters/ringtoneworkshop.png" alt="ringtoneworkshop.png" width="300" height="367.5"></a>
+      <p>[ ARCHIVE ]</p>
+      <ul>
+      <li><s>RINGTONE WORKSHOP</s> - 20/05 19:00-21:00 <a href="/ringtoneworkshop/">LINK</a></li>
+  </ul>
   <p>___________________</p>
   </div>
     </section>
@@ -56,6 +59,7 @@ layout: home
       <ul>
       <li>WHAT EXISTS AFTER... BY KAT MACDONALD <a href="https://otherkat.com/whatexistsafter/">LINK</a></li>
       <li>COMING TOGETHER BY FREDERIC RZEWSKI <a href="https://www.youtube.com/watch?v=wczJlxoxITE&ab_channel=ContemporaryClassical">LINK</a></li>
+      <li>BBC BY BENJI JEFFREY & KAT MACDONALD<a href="https://docs.google.com/spreadsheets/d/1IbOZp8JWv2r0IFJ4PJuXKEvjgO-qF2GfUbrEqvJgt0I/edit?gid=0#gid=0">LINK</a></li>
   </ul>
   <p>___________________</p>
 </div>
