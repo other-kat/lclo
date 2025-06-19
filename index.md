@@ -43,7 +43,7 @@ layout: home
     <button class="accordion">EVENTS</button>
 <div class="panel">
       <ul>
-      <li>PECKHAM CHAMBER ORCHESTRA SUMMER CONCERT - 09/06 19:00-21:00 <a href="https://peckhamchamberorchestra.co.uk/">LINK</a></li>
+      <li>PECKHAM CHAMBER ORCHESTRA SUMMER CONCERT - 20/08 19:00-21:00 <a href="https://peckhamchamberorchestra.co.uk/">LINK</a></li>
       </ul>
       <p>[ ARCHIVE ]</p>
       <ul>
