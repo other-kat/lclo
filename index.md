@@ -43,10 +43,11 @@ layout: home
     <button class="accordion">EVENTS</button>
 <div class="panel">
       <ul>
-      <li>PECKHAM CHAMBER ORCHESTRA SUMMER CONCERT - 20/08 19:00-21:00 <a href="https://peckhamchamberorchestra.co.uk/">LINK</a></li>
+      <li>TASTER SESSION - 02/10 19:00-21:00 <a href="https://chat.whatsapp.com/EXVoMvmAwFSIWxQ8vN5OXa?mode=ems_copy_t">LINK</a></li>
       </ul>
       <p>[ ARCHIVE ]</p>
       <ul>
+        <li><s>PECKHAM CHAMBER ORCHESTRA SUMMER CONCERT</s> - 20/08 19:00-21:00 <a href="https://peckhamchamberorchestra.co.uk/">LINK</a></li>
       <li><s>RINGTONE WORKSHOP</s> - 20/05 19:00-21:00 <a href="/ringtoneworkshop/">LINK</a></li>
   </ul>
   <p>___________________</p>
