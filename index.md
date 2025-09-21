@@ -20,19 +20,12 @@ layout: home
 <div class="panel">
       <article>
         <h3>
-            SPRING CYCLES (⚘↻)
+            START UP - SOUNDS
         </h3>
-        <p>REHEARSALS FORTNIGHTLY TUESDAYS @ AREBYTE BETHNAL GREEN, 62 ROMAN ROAD, E2 0PG</p>
+        <p>REHEARSAL - TUESDAY 7PM - 2ND OF OCTOBER</p>
 
 <p>
-            <ul>
-            <li><s>25/03: 19:00-21:00</s></li>
-            <li><s>08/04: 19:00-21:00</s></li>
-            <li><s>22/04: 19:00-21:00</s></li>
-            <li><s>06/05: 19:00-21:00</s></li>
-            <li>20/05: 19:00-21:00</li>
-            <li>MORE REHEARSALS SOON!</li>
-</ul>
+         <a href="/assets/img/posters/lcloposteroct25.jpeg"><img src="/assets/img/posters/lcloposteroct25.jpeg" height="auto" width="50%"/></a>
 </p>
       </article>
       <p>___________________</p>
@@ -43,7 +36,7 @@ layout: home
     <button class="accordion">EVENTS</button>
 <div class="panel">
       <ul>
-      <li>TASTER SESSION - 02/10 19:00-21:00 <a href="https://chat.whatsapp.com/EXVoMvmAwFSIWxQ8vN5OXa?mode=ems_copy_t">LINK</a></li>
+      <li>TASTER SESSION - 02/10 19:00-21:00 <a href="https://www.instagram.com/p/DOyXWY-CH2W/">LINK</a></li>
       </ul>
       <p>[ ARCHIVE ]</p>
       <ul>
@@ -60,7 +53,6 @@ layout: home
       <ul>
       <li>WHAT EXISTS AFTER... BY KAT MACDONALD <a href="https://otherkat.com/whatexistsafter/">LINK</a></li>
       <li>COMING TOGETHER BY FREDERIC RZEWSKI <a href="https://www.youtube.com/watch?v=wczJlxoxITE&ab_channel=ContemporaryClassical">LINK</a></li>
-      <li>BBC BY BENJI JEFFREY & KAT MACDONALD<a href="https://docs.google.com/spreadsheets/d/1IbOZp8JWv2r0IFJ4PJuXKEvjgO-qF2GfUbrEqvJgt0I/edit?gid=0#gid=0">LINK</a></li>
   </ul>
   <p>___________________</p>
 </div>
