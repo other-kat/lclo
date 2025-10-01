@@ -22,7 +22,7 @@ layout: home
         <h3>
             START UP - SOUNDS
         </h3>
-        <p>REHEARSAL - TUESDAY 7PM - 2ND OF OCTOBER</p>
+        <p>REHEARSAL - THURSDAY 7PM - 2ND OF OCTOBER</p>
 
 <p>
          <a href="/assets/img/posters/lcloposteroct25.jpeg"><img src="/assets/img/posters/lcloposteroct25.jpeg" height="auto" width="50%"/></a>
