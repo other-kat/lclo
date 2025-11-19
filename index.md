@@ -20,12 +20,12 @@ layout: home
 <div class="panel">
       <article>
         <h3>
-            START UP - SOUNDS
+            THIS IS NOT A WORKSHOP
         </h3>
-        <p>REHEARSAL - THURSDAY 7PM - 2ND OF OCTOBER</p>
+        <p>REHEARSAL - FRIDAY 7PM - 11TH OF NOVEMBER</p>
 
 <p>
-         <a href="/assets/img/posters/lcloposteroct25.jpeg"><img src="/assets/img/posters/lcloposteroct25.jpeg" height="auto" width="50%"/></a>
+         <a href="/assets/img/posters/notawork1.png"><img src="/assets/img/posters/notawork1.png" height="auto" width="50%"/></a>
 </p>
       </article>
       <p>___________________</p>
@@ -36,10 +36,11 @@ layout: home
     <button class="accordion">EVENTS</button>
 <div class="panel">
       <ul>
-      <li>TASTER SESSION - 02/10 19:00-21:00 <a href="https://www.instagram.com/p/DOyXWY-CH2W/">LINK</a></li>
+      <li>THIS IS NOT A WORKSHOP - 21/11 19:00-21:00 <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">LINK</a></li>
       </ul>
       <p>[ ARCHIVE ]</p>
       <ul>
+        <li><s>START UP - SOUNDS</s> - 02/10 19:00-21:00 <a href="https://www.instagram.com/p/DOyXWY-CH2W/">LINK</a></li>
         <li><s>PECKHAM CHAMBER ORCHESTRA SUMMER CONCERT</s> - 20/08 19:00-21:00 <a href="https://peckhamchamberorchestra.co.uk/">LINK</a></li>
       <li><s>RINGTONE WORKSHOP</s> - 20/05 19:00-21:00 <a href="/ringtoneworkshop/">LINK</a></li>
   </ul>
