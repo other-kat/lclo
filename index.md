@@ -20,13 +20,9 @@ layout: home
 <div class="panel">
       <article>
         <h3>
-            THIS IS NOT A WORKSHOP
+            NEW YEAR - SAME SOUNDS
         </h3>
-        <p>REHEARSAL - FRIDAY 7PM - 11TH OF NOVEMBER</p>
-
-<p>
-         <a href="/assets/img/posters/notawork1.png"><img src="/assets/img/posters/notawork1.png" height="auto" width="50%"/></a>
-</p>
+        <p>REHEARSALS - EVERY FORTNIGHT STARTING THURSDAY 26th OF FEB 2026</p>
       </article>
       <p>___________________</p>
     </div>
@@ -36,27 +32,17 @@ layout: home
     <button class="accordion">EVENTS</button>
 <div class="panel">
       <ul>
-      <li>THIS IS NOT A WORKSHOP - 21/11 19:00-21:00 <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">LINK</a></li>
+      <li>AGAINST THE CLOCK - 20/03 19:00-21:00 <a href="https://www.instagram.com/p/DVd5i_6iuX6/">LINK</a></li>
       </ul>
       <p>[ ARCHIVE ]</p>
       <ul>
+        <li><s>THIS IS NOT A WORKSHOP</s> - 21/11 19:00-21:00 <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">LINK</a></li>
         <li><s>START UP - SOUNDS</s> - 02/10 19:00-21:00 <a href="https://www.instagram.com/p/DOyXWY-CH2W/">LINK</a></li>
         <li><s>PECKHAM CHAMBER ORCHESTRA SUMMER CONCERT</s> - 20/08 19:00-21:00 <a href="https://peckhamchamberorchestra.co.uk/">LINK</a></li>
       <li><s>RINGTONE WORKSHOP</s> - 20/05 19:00-21:00 <a href="/ringtoneworkshop/">LINK</a></li>
   </ul>
   <p>___________________</p>
   </div>
-    </section>
-
-   <section id="scores" class="section">
-    <button class="accordion">CURRENT SCORES</button>
-<div class="panel">
-      <ul>
-      <li>WHAT EXISTS AFTER... BY KAT MACDONALD <a href="https://otherkat.com/whatexistsafter/">LINK</a></li>
-      <li>COMING TOGETHER BY FREDERIC RZEWSKI <a href="https://www.youtube.com/watch?v=wczJlxoxITE&ab_channel=ContemporaryClassical">LINK</a></li>
-  </ul>
-  <p>___________________</p>
-</div>
     </section>
 
    <section id="contact" class="section">
