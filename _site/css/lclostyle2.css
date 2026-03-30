@@ -68,6 +68,21 @@ h4 {
    font-size: 5vw;
    color: #FFFFFF;
 }
+.title {
+   text-align: center;
+   margin-left: 5px;
+   word-spacing: 5px;
+   Padding: 2px;
+   font-size: larger;
+   font-size: 5vw;
+   color: #FFFFFF;
+   text-decoration: none;
+}
+.title:hover {
+    color:#efd153;
+    text-shadow: 0 0 1vw white;
+    text-decoration: none;
+}
 body {
    text-align: center;
    word-spacing: 30px;
