@@ -1,0 +1,363 @@
+
+    <main>
+        <table id='calendar' class='noselect'>
+        </table>
+        <script>
+
+        function mainCalendar() {
+                {% assign eventsJson = site.data.calendar | jsonify %}
+                const events = {{ eventsJson }};
+                const eventsByDate = {}
+                events.forEach(event => {eventsByDate[event.date] = event})
+                const table = document.getElementById('calendar')
+                const now = new Date()
+                const STATE = {
+                    'monthArray': [],
+                    'displayDate': now,
+                    'firstOfMonth': new Date(now.getFullYear(), now.getMonth(), 1),
+                    'displayRandomly': false,
+                }
+
+                // Randomize array in-place using Durstenfeld shuffle algorithm
+                // ty stackoverflow person from 2012
+                function shuffleArray(array) {
+                    for (var i = array.length - 1; i > 0; i--) {
+                        var j = Math.floor(Math.random() * (i + 1));
+                        var temp = array[i];
+                        array[i] = array[j];
+                        array[j] = temp;
+                    }
+                    return array
+                }
+
+                function constructMonthArray() {
+
+                    // ok so the aim here is to get an array with each cell we need.
+                    // inc event details for days, and blank cells for before the start and after the end of each month
+                    monthArray = []
+
+                    function getDaysInMonth() {
+                        return new Date(STATE.displayDate.getFullYear(), STATE.displayDate.getMonth() + 1, 0).getDate();
+                    }
+
+                    // this gets the number of blank cells we need before the 1st of the month
+                    function getOffset() {
+                        let firstOfMonth = new Date(STATE.displayDate.getFullYear(), STATE.displayDate.getMonth(), 1);
+                        return (firstOfMonth.getDay() + 6) % 7
+                    }
+
+                    for (let i = 0; i < getOffset(); i++) {
+                        monthArray.push('blankCell')
+                    }
+
+
+                    // this adds the actual days in the month
+                    for (let i = 1; i < (getDaysInMonth() + 1); i++) {
+                        const d = new Date(STATE.displayDate.getFullYear(), STATE.displayDate.getMonth(), i)
+                        const key = `${STATE.displayDate.getFullYear()}-${String(STATE.displayDate.getMonth() + 1).padStart(2, '0')}-${String(i).padStart(2, '0')}`
+                        monthArray.push({
+                            date: d,
+                            event: eventsByDate[key] || {}
+                        })
+                        if (i === 1) {STATE.firstOfMonth = d}
+                    }
+
+                    // this adds the blank cells after the month
+                    let lastOfMonth = new Date(STATE.displayDate.getFullYear(), STATE.displayDate.getMonth(), getDaysInMonth())
+                    let trailingDays = (7 - ((lastOfMonth.getDay() + 6) % 7) - 1) % 7
+
+                    for (let day = 0; day < trailingDays; day++) {
+                        monthArray.push(`blankCell`)
+                    }
+
+                    if (STATE.displayRandomly) {
+                        monthArray = shuffleArray(monthArray)
+                    }
+
+                    STATE.monthArray = monthArray
+                }
+
+
+                function displayEvent(event) {
+                    const cells = table.querySelectorAll('td')
+                    const words = event.description.split(' ')
+                    const eventDate = new Date(event.date)
+                    let i = 0
+
+                    cells.forEach((cell) => {
+                        const cellDate = new Date(cell.dataset.date)
+
+                        if (cellDate.getDate() === eventDate.getDate()) {
+
+                            cell.innerText = event.time
+
+
+                        }
+
+                        else if (cell.innerText != '~' && event.cancelled != 'true' || STATE.displayRandomly) {
+
+
+                                if (i < words.length) {
+
+                                    cell.innerText = words[i]
+                                    cell.classList.add('eventText')
+                                } else {
+
+                                    cell.innerText = '~'
+                                    cell.classList.add('eventTextBlank')
+                                }
+
+                                if (cell.dataset.defaultText === ':)') {
+                                    cell.innerText = ':o'
+                                }
+
+
+                            i++
+                        }
+                        if (event.cancelled === 'true') {
+
+                            if (cell.dataset.defaultText === ':)') {
+
+                                cell.innerText = ':('
+                            } else {
+
+                                cell.innerText = 'CANCELLED'
+                            }
+
+                            cell.classList.add('cancelledEvent')
+
+                        }
+
+
+                    })
+
+                }
+                function unDisplayEvent() {
+
+                    const cells = table.querySelectorAll('td')
+                    cells.forEach(cell => {
+                        cell.innerText = cell.dataset.defaultText
+                        cell.classList.remove('eventText')
+                        cell.classList.remove('eventTextBlank')
+                        cell.classList.remove('cancelledEvent')
+                    })
+
+
+                }
+
+            function buildTableDOM() {
+                    const fragment = document.createDocumentFragment()
+                    let row = document.createElement('tr')
+                    let i = 1
+                    STATE.monthArray.forEach(day => {
+
+                        const cell = document.createElement('td')
+
+                        if (day?.date) {
+                            cell.innerText = day.date.getDate() + '.' + (day.date.getMonth() + 1)
+                            const date = new Date(day.date)
+                            cell.dataset.date = date.toISOString()
+                            if (date.getDate() === now.getDate() && date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear()) {
+                                cell.innerHTML = '<b>today</b>'
+                            }
+                        } else {
+                            if (i === monthArray.length) {cell.innerText = ':)'}
+                            else {cell.innerText = '~'}
+                        }
+
+                        if (day?.event && Object.keys(day.event).length > 0) {
+                            const eventCancelled = day.event.cancelled === 'true' ? true : false
+                            if (eventCancelled) {cell.classList.add('cancelled')}
+                            else {cell.classList.add(day.event.type)}
+                            cell.addEventListener('mouseover', () => {displayEvent(day.event)})
+                            cell.addEventListener('mouseout', () => {unDisplayEvent()})
+                        }
+
+                        row.appendChild(cell)
+                        if (i % 7 === 0) {
+                            fragment.appendChild(row)
+                            row = document.createElement('tr')
+                        }
+
+                        cell.dataset.defaultText = cell.innerText
+
+
+                        i++
+
+                    })
+
+                    if (row.children.length > 0) {
+                        fragment.appendChild(row)
+                    }
+
+                    const monthCell = table.querySelector('#month')
+                    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+                    monthCell.innerText = months[STATE.firstOfMonth.getMonth()] + ' ' + String(STATE.firstOfMonth.getFullYear()).slice(2)
+
+
+
+                    table.appendChild(fragment)
+                }
+
+
+                function addMonthButtons() {
+                    const forwardButton = table.querySelector('#monthForwards')
+                    const backwardButton = table.querySelector('#monthBackwards')
+                    const randomButton = table.querySelector('#randomise')
+                    const dayOfWeekIndicator = table.querySelector('#dayOfWeekIndicator')
+
+                    forwardButton.addEventListener('click', function() {
+                        STATE.displayDate = new Date(STATE.displayDate.getFullYear(), STATE.displayDate.getMonth() + 1, 1)
+                        refreshUI()
+                    })
+                    backwardButton.addEventListener('click', function() {
+                        STATE.displayDate = new Date(STATE.displayDate.getFullYear(), STATE.displayDate.getMonth() - 1, 1)
+                        refreshUI()
+                    })
+                    randomButton.addEventListener('click', function() {
+                        STATE.displayRandomly = !STATE.displayRandomly
+                        refreshUI()
+                    })
+
+                    if (STATE.displayRandomly) {
+                        randomButton.classList.add('active')
+                        dayOfWeekIndicator.innerText = '???'
+                    } else {
+                        randomButton.classList.remove('active')
+                        dayOfWeekIndicator.innerText = 'Mon'
+                    }
+
+
+                }
+
+                function refreshUI() {
+                    table.innerHTML = `
+                            <tr>
+                                <th id='dayofweekindicator'>mon</th>
+                                <th></th>
+                                <th></th>
+                                <th id='monthBackwards' class='button'>↩</th>
+                                <th id='month'></th>
+                                <th id='monthForwards' class='button'>↪</th>
+                                <th id='randomise' class='button'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5"/>
+                                <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192"/>
+                                </svg></th>
+                            </tr>
+                    `
+                    constructMonthArray()
+                    buildTableDOM()
+                    addMonthButtons()
+                }
+
+                refreshUI()
+         }
+         mainCalendar()
+
+
+
+
+
+
+        </script>
+    </main>
+    <style>
+    table {
+        font-family: 'Courier New';
+        margin-top: 50px;
+        margin-bottom: 50px;
+        border-collapse: collapse;
+        cursor: none;
+        border: 2px solid rgb(45,45,45);
+        width: 100%;
+     }
+    td, th {
+        border: 2px hidden transparent;
+        font-size: 16pt;
+        background-color: rgb(27,27,27);
+        text-align: right;
+        color: white;
+        min-width: 115px;
+        padding: 5px;
+        color: rgb(215,215,216) ;
+     }
+
+     th {
+
+        background-color: rgb(45,45,45);
+     }
+
+    td:hover, th:hover  {
+        background-color: rgb(150,150,150) ;
+        font-weight: bold;
+     }
+
+    td.rehersals, th.rehersals {
+        background-color: rgb(189,214,172);
+        color: black !important;
+     }
+    td.performances, th.performances {
+
+        background-color: rgb(244,218,107);
+        color: black !important;
+     }
+     td.rehersals:hover, th.rehersals:hover {
+
+        background-color: rgb(159, 215, 121) !important;
+     }
+     td.performances:hover, th.performances:hover {
+
+        background-color: rgb(249, 188, 6) !important;
+     }
+
+     th.active {
+         background-color: rgb(230,230,230);
+         color: black
+     }
+
+     th.button {
+         text-align:  center !important
+     }
+
+     table #month {
+         text-align:  center !important
+     }
+
+     th.button:hover {
+         background-color: rgb(230,230,230) !important;
+         color: black !important
+
+     }
+     td.eventText {
+        background-color: rgb(27,27,27) !important;
+        color: white !important;
+        text-align: left !important;
+     }
+     td.eventTextBlank {
+        background-color: rgb(27,27,27) !important;
+        color: white !important;
+     }
+
+     td.cancelled {
+
+        background-color: rgb(194, 120, 97);
+     }
+
+     td.cancelledEvent {
+
+        background-color: rgb(194, 120, 97) !important;
+        color: white !important;
+     }
+
+    .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+    }
+
+
+    </style>
