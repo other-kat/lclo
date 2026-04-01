@@ -9,6 +9,10 @@
 @font-face { font-family: Work-Regular; src: url('WorkSans-Regular.otf'); } 
  @font-face { font-family: Work-Regular; font-weight: bold; src: url('WorkSans-Regular.otf');}
 
+body {
+
+    cursor: url('/assets/img/logo/logo-tiny.png'), auto
+}
 /*header style*/
 header {
    text-align: center; 
