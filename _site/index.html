@@ -29,14 +29,13 @@
       <button class="accordion">SEASON</button>
 <div class="panel">
 
-    <main>
         <table id="calendar" class="noselect">
         </table>
         <script>
 
         function mainCalendar() {
                 
-                const events = [{"date":"2026-02-26","time":"6pm","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false"},{"date":"2026-03-12","time":"6pm","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false"},{"date":"2026-03-19","time":"6pm","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false"},{"date":"2026-03-20","time":"6:30pm","description":"Beat The Clock @ Vespers Club, Peckham, SE15 4BQ","type":"performances","cancelled":"false"},{"date":"2026-03-26","time":"6pm","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"true"},{"date":"2026-04-09","time":"6pm","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false"},{"date":"2026-04-23","time":"6pm","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false"}];
+                const events = [{"name":"Rehersal","date":"2026-02-26","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false","url":""},{"name":"Rehersal","date":"2026-03-12","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false","url":""},{"name":"Rehersal","date":"2026-03-19","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false","url":""},{"name":"Against the Clock","date":"2026-03-20","time":"19:30","description":"Against The Clock @ Vespers Club, Peckham, SE15 4BQ","type":"performances","cancelled":"false","url":"https://gel.now/events/73"},{"name":"Rehersal","date":"2026-03-26","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"true","url":""},{"name":"Rehersal","date":"2026-04-09","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false","url":""},{"name":"Rehersal","date":"2026-04-23","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false","url":""}];
                 const eventsByDate = {}
                 events.forEach(event => {eventsByDate[event.date] = event})
                 const table = document.getElementById('calendar')
@@ -119,7 +118,11 @@
 
                         if (cellDate.getDate() === eventDate.getDate()) {
 
-                            cell.innerText = event.time
+
+                            console.log(event.time)
+                            cell.innerHTML = event.time
+
+                            if (event?.url) {cell.innerText += ' ⎘'}
 
 
                         }
@@ -140,6 +143,7 @@
                                 if (cell.dataset.defaultText === ':)') {
                                     cell.innerText = ':o'
                                 }
+
 
 
                             i++
@@ -188,7 +192,8 @@
                             const date = new Date(day.date)
                             cell.dataset.date = date.toISOString()
                             if (date.getDate() === now.getDate() && date.getMonth() === now.getMonth() && date.getFullYear() === now.getFullYear()) {
-                                cell.innerHTML = '<b>today</b>'
+                                cell.innerHTML = 'today'
+                                cell.classList.add('todayCell')
                             }
                         } else {
                             if (i === monthArray.length) {cell.innerText = ':)'}
@@ -201,6 +206,9 @@
                             else {cell.classList.add(day.event.type)}
                             cell.addEventListener('mouseover', () => {displayEvent(day.event)})
                             cell.addEventListener('mouseout', () => {unDisplayEvent()})
+                            if (day?.event.url != '') {
+                                cell.addEventListener('click',  () => {window.location.href = day.event.url})
+                            }
                         }
 
                         row.appendChild(cell)
@@ -221,7 +229,7 @@
                     }
 
                     const monthCell = table.querySelector('#month')
-                    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+                    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
                     monthCell.innerText = months[STATE.firstOfMonth.getMonth()] + ' ' + String(STATE.firstOfMonth.getFullYear()).slice(2)
 
 
@@ -234,7 +242,8 @@
                     const forwardButton = table.querySelector('#monthForwards')
                     const backwardButton = table.querySelector('#monthBackwards')
                     const randomButton = table.querySelector('#randomise')
-                    const dayOfWeekIndicator = table.querySelector('#dayOfWeekIndicator')
+                    const subscribeButton = table.querySelector('#subscribe')
+                    const dayOfWeekIndicator = table.querySelector('#dayofweekindicator')
 
                     forwardButton.addEventListener('click', function() {
                         STATE.displayDate = new Date(STATE.displayDate.getFullYear(), STATE.displayDate.getMonth() + 1, 1)
@@ -248,6 +257,11 @@
                         STATE.displayRandomly = !STATE.displayRandomly
                         refreshUI()
                     })
+                    subscribeButton.addEventListener('click', function() {
+                        window.location.href = "webcal://calendar.ics"
+                        console.log(window.location.href)
+                    })
+
 
                     if (STATE.displayRandomly) {
                         randomButton.classList.add('active')
@@ -265,14 +279,20 @@
                             <tr>
                                 <th id='dayofweekindicator'>mon</th>
                                 <th></th>
-                                <th></th>
+                                <th id='subscribe'>
+                                    <svg width="800px" height="800px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M3 9H21M12 18V12M15 15.001L9 15M7 3V5M17 3V5M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </th>
                                 <th id='monthBackwards' class='button'>↩</th>
                                 <th id='month'></th>
                                 <th id='monthForwards' class='button'>↪</th>
-                                <th id='randomise' class='button'><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5"/>
-                                <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192"/>
-                                </svg></th>
+                                <th id='randomise' class='button'>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-shuffle" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd" d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.6 9.6 0 0 0 7.556 8a9.6 9.6 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.6 10.6 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.6 9.6 0 0 0 6.444 8a9.6 9.6 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5"/>
+                                    <path d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192m0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192"/>
+                                    </svg>
+                                </th>
                             </tr>
                     `
                     constructMonthArray()
@@ -290,8 +310,18 @@
 
 
         </script>
-    </main>
     <style>
+
+     table svg {
+         max-width: 25px;
+         max-height: 25px;
+     }
+    th#subscribe {
+        display: flex;
+        justify-content: center; /* horizontal centering */
+        align-items: center;     /* vertical centering */
+        height: 25px;            /* optional: set row height */
+    }
     table {
         font-family: 'Courier New';
         margin-top: 50px;
@@ -300,8 +330,10 @@
         cursor: none;
         border: 2px solid rgb(45,45,45);
         width: 100%;
+
      }
     td, th {
+        vertical-align: center;
         border: 2px hidden transparent;
         font-size: 16pt;
         background-color: rgb(27,27,27);
@@ -359,9 +391,10 @@
 
      }
      td.eventText {
-        background-color: rgb(27,27,27) !important;
-        color: white !important;
+        background-color: rgb(250,250,250) !important;
+        color: rgb(27,27,27) !important;
         text-align: left !important;
+        font-weight: normal !important;
      }
      td.eventTextBlank {
         background-color: rgb(27,27,27) !important;
@@ -377,6 +410,10 @@
 
         background-color: rgb(194, 120, 97) !important;
         color: white !important;
+     }
+
+     td.todayCell {
+         font-weight: bold
      }
 
     .noselect {
