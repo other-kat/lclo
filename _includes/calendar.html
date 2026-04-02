@@ -1,47 +1,11 @@
-<!DOCTYPE html>
-<html>
-  <head>
-     <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <title>lclo</title>
-     <link rel="stylesheet" href="/css/lclostyle2.css">
-</head>
- <header class="top-banner">
-    <h3><a href="/name/#london" class="title">LONDON</a> <a href="/name/#community" class="title">COMMUNITY</a> <a href="/name/#laptop" class="title">LAPTOP</a> <a href="/name/#orchestra" class="title">ORCHESTRA</a></h3>
-    <p>___________________</p>
-  </header>
-<body>
-    <main>
-      <article>
-        <main>
-   <section id="ABOUT" class="section">
-    <button class="accordion">ABOUT</button>
-<div class="panel">
-  <article>
-        <p>WE ARE A COMMUNITY BASED LAPTOP ORCHESTRA, OPEN TO ANYONE WHO'S INTERESTED. NO EXPERIENCE REQUIRED. ONLY A LAPTOP.</p>
-        <p><a href="/about/">MORE</a></p>
-      </article>
-      <p>___________________</p>
-</div>
-    </section>
 
-<section id="REHEARSALS" class="section">
-      <button class="accordion">SEASON</button>
-<div class="panel" style="padding-left: 0px; padding-right: 0px;">
-  <article>
-        <h3>
-            NEW YEAR - SAME SOUNDS
-        </h3>
-        <p>REHEARSALS - EVERY FORTNIGHT STARTING THURSDAY 26th OF FEB 2026</p>
-      </article>
-
-        <table id="calendar" class="noselect">
+        <table id='calendar' class='noselect'>
         </table>
         <script>
 
         function mainCalendar() {
-                
-                const events = [{"name":"Rehersal","date":"2026-02-26","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false","url":""},{"name":"Rehersal","date":"2026-03-12","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false","url":""},{"name":"Rehersal","date":"2026-03-19","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false","url":""},{"name":"Against the Clock","date":"2026-03-20","time":"19:30","description":"Against The Clock @ Vespers Club, Peckham, SE15 4BQ","type":"performances","cancelled":"false","url":"https://gel.now/events/73"},{"name":"Rehersal","date":"2026-03-26","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"true","url":""},{"name":"Rehersal","date":"2026-04-09","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false","url":""},{"name":"Rehersal","date":"2026-04-23","time":"19:00","description":"Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"false","url":""}];
+                {% assign eventsJson = site.data.calendar | jsonify %}
+                const events = {{ eventsJson }};
                 const eventsByDate = {}
                 events.forEach(event => {eventsByDate[event.date] = event})
                 const table = document.getElementById('calendar')
@@ -456,70 +420,3 @@
 
 
     </style>
-
-<p>___________________</p>
-  </div>
-    </section>
-
-<section id="events" class="section">
-    <button class="accordion">EVENTS</button>
-<div class="panel">
-      <ul>
-      <li>NEW PERFORMANCE DETAILS COMING SOON</li>
-      </ul>
-      <p>[ ARCHIVE ]</p>
-      <ul>
-        <li><s>AGAINST THE CLOCK</s> - 20/03 19:00-21:00 <a href="https://www.instagram.com/p/DVd5i_6iuX6/">LINK</a></li>
-        <li><s>THIS IS NOT A WORKSHOP</s> - 21/11 19:00-21:00 <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">LINK</a></li>
-        <li><s>START UP - SOUNDS</s> - 02/10 19:00-21:00 <a href="https://www.instagram.com/p/DOyXWY-CH2W/">LINK</a></li>
-        <li><s>PECKHAM CHAMBER ORCHESTRA SUMMER CONCERT</s> - 20/08 19:00-21:00 <a href="https://peckhamchamberorchestra.co.uk/">LINK</a></li>
-      <li><s>RINGTONE WORKSHOP</s> - 20/05 19:00-21:00 <a href="/ringtoneworkshop/">LINK</a></li>
-  </ul>
-  <p>___________________</p>
-  </div>
-    </section>
-
-   <section id="contact" class="section">
-    <button class="accordion">CONTACT</button>
-<div class="panel">
-      <p>WHATSAPP <a href="https://chat.whatsapp.com/EXVoMvmAwFSIWxQ8vN5OXa">CHAT WITH US</a></p>
-      <p>ARE.NA <a href="https://www.are.na/kat-macdonald/london_community_laptop_orchestra">ADD TO OUR BOARD</a></p>
-      <p>INSTAGRAM <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">UPDATES</a></p>
-      <p><a href="londoncommunitylaptoporchestra@protonmail.com">EMAIL</a></p>
-      <form action="https://buttondown.com/api/emails/embed-subscribe/londoncommunitylaptoporchestra" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/londoncommunitylaptoporchestra', 'popupwindow')" class="embeddable-buttondown-form">
-  <div style="margin-top: 2rem;">MAILING LIST</div>
-  <div style="margin-top: 2rem;"><input type="email" name="email" id="bd-email" style="width: 100%;font-size: 2rem;" /></div>
-  <div style="margin-top: 2rem;"><input type="submit" value="Subscribe" style="padding: 0.75rem 1.25rem; font-size: 2rem;" /></div>
-</form>
-      <p>___________________</p>
-    </div>
-    </section>
-  </main>
-
-<script>
-    var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    this.classList.toggle("active");
-    var panel = this.nextElementSibling;
-    if (panel.style.maxHeight) {
-      panel.style.maxHeight = null;
-    } else {
-      panel.style.maxHeight = panel.scrollHeight + "px";
-    }
-  });
-}
-</script>
-
-
-      </article>
-    </main>
-</body>
-<div class="logo">
-      <a href="about">
-      <img src="/assets/img/logo/lclologo.gif" alt="london community laptop orchestra clowelcome" height="auto" width="50%"></a>
-</div>
-
-</html>

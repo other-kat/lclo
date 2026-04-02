@@ -16,15 +16,16 @@ layout: home
 
 <section id="REHEARSALS" class="section">
       <button class="accordion">SEASON</button>
-<div class="panel">
-      <article>
+<div class="panel" style='padding-left: 0px; padding-right: 0px;'>
+  <article>
         <h3>
             NEW YEAR - SAME SOUNDS
         </h3>
         <p>REHEARSALS - EVERY FORTNIGHT STARTING THURSDAY 26th OF FEB 2026</p>
       </article>
-      <p>___________________</p>
-    </div>
+{% include calendar.html %}
+<p>___________________</p>
+  </div>
     </section>
 
 <section id="events" class="section">
@@ -35,7 +36,7 @@ layout: home
       </ul>
       <p>[ ARCHIVE ]</p>
       <ul>
-        <li>AGAINST THE CLOCK - 20/03 19:00-21:00 <a href="https://www.instagram.com/p/DVd5i_6iuX6/">LINK</a></li>
+        <li><s>AGAINST THE CLOCK</s> - 20/03 19:00-21:00 <a href="https://www.instagram.com/p/DVd5i_6iuX6/">LINK</a></li>
         <li><s>THIS IS NOT A WORKSHOP</s> - 21/11 19:00-21:00 <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">LINK</a></li>
         <li><s>START UP - SOUNDS</s> - 02/10 19:00-21:00 <a href="https://www.instagram.com/p/DOyXWY-CH2W/">LINK</a></li>
         <li><s>PECKHAM CHAMBER ORCHESTRA SUMMER CONCERT</s> - 20/08 19:00-21:00 <a href="https://peckhamchamberorchestra.co.uk/">LINK</a></li>
