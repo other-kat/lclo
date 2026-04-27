@@ -18,7 +18,7 @@ layout: home
         <button class="accordion">SEASON</button>
         <div class="panel" style='padding: 0px'>
             <p>NEW YEAR - SAME SOUNDS.</p>
-            <p>REHERSALS EVERY OTHER FORTNIGHT. SEE BELOW FOR DETAILS</p>
+            <p>REHERSALS EVERY OTHER FORTNIGHT.</p>
             <article id='calendarArticle' style='display: flex; justify-content: center'>
             {% include calendar.html %}
             </article>
@@ -27,8 +27,7 @@ layout: home
     
     <section class="section">
         <button class='accordion'>PERFORMANCES</button>
-        <div class='panel'>
-            <p>test</p>
+        <div class='panel' id='performanceContent'>
         </div>
     </section>
 

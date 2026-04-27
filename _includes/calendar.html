@@ -11,13 +11,65 @@
                 return check;
             };
 
+        {% assign eventsJson = site.data.calendar | jsonify %}
+        const events = {{ eventsJson }};
+        const eventsByDate = {}
+        events.forEach(event => {eventsByDate[event.date] = event})
+        const now = new Date()
+
+
+        function showPerformances() {
+             const performanceDiv = document.querySelector('#performanceContent')
+             const upcoming = document.createElement('div')
+             upcoming.innerHTML = '<h3>Soon</h3>'
+             const archive = document.createElement('div')
+             archive.innerHTML = '<h3>Past</h3>'
+
+             let upcomingEvents = 0
+             let pastEvents = 0
+
+             events.forEach(event => {
+
+                 if (event.type === 'performances') {
+                    const eventListing = document.createElement('span')
+                    const eventDate = new Date(event.date)
+                    let href = ''
+                    if (event.url != null) {href = `<a target='_blank' href='${event.url}'>`}
+
+                    eventListing.innerHTML = `
+                        ${eventDate.getDate()}/${eventDate.getMonth() + 1}/${eventDate.getFullYear()}
+                        - ${event.time} - ${href}${event.name}</a><br>${event.description}<br><br>`
+
+                    const eventPassed = now.getTime() > eventDate.getTime() ? true : false
+                    console.log(event, eventPassed)
+
+                    if (eventPassed) {
+                        eventListing.classList.add('pastEvents')
+                        archive.appendChild(eventListing)
+                        pastEvents++
+                    }
+                    else {upcoming.appendChild(eventListing); upcomingEvents++}
+
+
+                 }
+
+
+
+             })
+
+             if (!upcomingEvents) {upcoming.innerHTML += '<p>...</p>'}
+             if (!pastEvents) {archive.innerHTML += '<p>...</p>'}
+
+             performanceDiv.appendChild(upcoming)
+             performanceDiv.appendChild(archive)
+         }
+
+        window.addEventListener("load", (event) => {
+            showPerformances()
+        });
+
         function mainCalendar() {
-                {% assign eventsJson = site.data.calendar | jsonify %}
-                const events = {{ eventsJson }};
-                const eventsByDate = {}
-                events.forEach(event => {eventsByDate[event.date] = event})
                 const table = document.getElementById('calendar')
-                const now = new Date()
                 const STATE = {
                     'monthArray': [],
                     'displayDate': now,
@@ -87,7 +139,7 @@
 
                 function displayEvent(event) {
                     const cells = table.querySelectorAll('td')
-                    const words = event.description.split(' ')
+                    const words = (event.name + ' ' + event.description).split(' ');
                     const eventDate = new Date(event.date)
                     let i = 0
 
@@ -97,7 +149,6 @@
                         if (cellDate.getDate() === eventDate.getDate()) {
 
 
-                            console.log(event.time)
                             cell.innerHTML = event.time
 
                             if (event?.url) {cell.innerText += ' ⎘'}
@@ -105,7 +156,7 @@
 
                         }
 
-                        else if (cell.innerText != '~' && event.cancelled != 'true' || STATE.displayRandomly) {
+                        else if (cell.innerText != '~' && event.cancelled.toLowerCase() != 'true' || STATE.displayRandomly) {
 
 
                                 if (i < words.length) {
@@ -126,7 +177,7 @@
 
                             i++
                         }
-                        if (event.cancelled === 'true') {
+                        if (event.cancelled.toLowerCase() === 'true') {
 
                             if (cell.dataset.defaultText === ':)') {
 
@@ -180,7 +231,7 @@
 
                         if (day?.event && Object.keys(day.event).length > 0) {
 
-                            const eventCancelled = day.event.cancelled === 'true' ? true : false
+                            const eventCancelled = day.event.cancelled.toLowerCase() === 'true' ? true : false
 
                             if (eventCancelled) {cell.classList.add('cancelled')}
                             else {cell.classList.add(day.event.type)}
@@ -270,7 +321,6 @@
                     })
                     subscribeButton.addEventListener('click', function() {
                         window.location.href = "webcal://calendar.ics"
-                        console.log(window.location.href)
                     })
 
 
@@ -335,7 +385,7 @@
     }
     table {
         font-family: 'Courier New';
-        margin-bottom: 50px;
+        margin-bottom: 60px;
         border-collapse: collapse;
         cursor: none;
         border: 2px solid rgb(45,45,45);
@@ -351,6 +401,7 @@
         min-width: 115px;
         color: white;
         padding: 5px;
+        padding-top: 30px;
         padding-right: 8px;
         color: rgb(215,215,216) ;
      }
@@ -416,6 +467,11 @@
          font-weight: bold
      }
 
+     .pastEvents {
+         opacity: 0.8;
+         filter: saturate(50%)
+     }
+
     .noselect {
     -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none; /* Safari */
@@ -435,6 +491,7 @@
             font-size: 0.3em;
             padding: 0px;
             padding-right: 3px;
+            padding-top: 0px;
             min-width: 13vw;
 
         }
