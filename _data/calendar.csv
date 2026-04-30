@@ -1,8 +1,12 @@
 name,date,time,description,type,cancelled,url
-Rehersal,2026-02-26,"19:00","Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!",rehersals,false,""
-Rehersal,2026-03-12,"19:00","Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!",rehersals,false,""
-Rehersal,2026-03-19,"19:00","Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!",rehersals,false,""
-Against the Clock,2026-03-20,"19:30","Against The Clock @ Vespers Club, Peckham, SE15 4BQ",performances,false,"https://gel.now/events/73"
-Rehersal,2026-03-26,"19:00","Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!",rehersals,true,""
-Rehersal,2026-04-09,"19:00","Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!",rehersals,false,""
-Rehersal,2026-04-23,"19:00","Rehearsal @ the Barbican. Whatsapp group for details. Bring a laptop!!!",rehersals,false,""
+Ringtone Workshop,2025-05-20,19:00,been & gone :(,performances,FALSE ,https://lclo.otherkat.com/ringtoneworkshop/
+Peckham Chamber Orchestra Summer Concert,2025-08-20,19:00,been & gone :(,performances,FALSE,https://peckhamchamberorchestra.co.uk/
+Start Up - Sounds,2025-02-10,19:00,been & gone :(,performances,FALSE,https://www.instagram.com/p/DOyXWY-CH2W/
+This Is Not A Workshop,2025-11-21,19:00,been & gone :(,performances,FALSE,
+Rehersal,2026-02-26,19:00,@ the Barbican. Whatsapp group for details. Bring a laptop!!!,rehersals,FALSE,
+Rehersal,2026-03-12,19:00,@ the Barbican. Whatsapp group for details. Bring a laptop!!!,rehersals,FALSE,
+Rehersal,2026-03-19,19:00,@ the Barbican. Whatsapp group for details. Bring a laptop!!!,rehersals,FALSE,
+Against the Clock,2026-03-20,19:30,"@ Vespers Club, Peckham, SE15 4BQ",performances,FALSE,https://gel.now/events/73
+Rehersal,2026-03-26,19:00,@ the Barbican. Whatsapp group for details. Bring a laptop!!!,rehersals,TRUE,
+Rehersal,2026-04-09,19:00,@ the Barbican. Whatsapp group for details. Bring a laptop!!!,rehersals,FALSE,
+Rehersal,2026-04-23,19:00,@ the Barbican. Whatsapp group for details. Bring a laptop!!!,rehersals,FALSE,
