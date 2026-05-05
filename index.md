@@ -18,7 +18,7 @@ layout: home
         <button class="accordion">SEASON</button>
         <div class="panel" style='padding: 0px'>
             <p>NEW YEAR - SAME SOUNDS.</p>
-            <p>REHERSALS EVERY OTHER FORTNIGHT.</p>
+            <p>REHEARSALS EVERY FORTNIGHT.</p>
             <article id='calendarArticle' style='display: flex; justify-content: center'>
             {% include calendar.html %}
             </article>
@@ -27,14 +27,14 @@ layout: home
     
     <section class="section">
         <button class='accordion'>PERFORMANCES</button>
-        <div class='panel' id='performanceContent'>
+        <div class='panel' >
+            <article id='performanceContent'></article>
         </div>
     </section>
 
     <section id="contact" class="section">
         <button class="accordion">CONTACT</button>
         <div class="panel">
-        <article>
             <p>WHATSAPP <a href="https://chat.whatsapp.com/EXVoMvmAwFSIWxQ8vN5OXa">CHAT WITH US</a></p>
             <p>ARE.NA <a href="https://www.are.na/kat-macdonald/london_community_laptop_orchestra">ADD TO OUR BOARD</a></p>
             <p>INSTAGRAM <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">UPDATES</a></p>
@@ -48,11 +48,10 @@ layout: home
             >
                 <p style='margin-bottom: 0px'>MAILING LIST</p>
                 <div class='flex' style='width: 100%; justify-content: center; align-items: center; margin-bottom: 5px;'>
-                    <input type="email" name="email" id="bd-email" style="width: 60%; max-width: 60vw; font-size: 2rem;margin-right: 4px; border-radius: 0px; border: 0px solid #00000000; padding: 0.75rem "/>
-                    <input type="submit" value="Subscribe" style="padding: 0.75rem 1.25rem; font-size: 2rem; background-color: #efd153; border: none; cursor: pointer; margin-top: 0.5em; margin-bottom: 0.5em"/>
+                    <input type="email" name="email" id="bd-email"/>
+                    <input type="submit" value="Subscribe" id='subscribeButton' />
                 </div>
             </form>
-        </article>
         </div>
     </section>
     <hr>

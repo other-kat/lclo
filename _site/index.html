@@ -12,7 +12,6 @@
 
 <body>
     <main>
-        <main>
 <hr />
     <section id="ABOUT" class="section">
         <button class="accordion">ABOUT</button>
@@ -28,7 +27,7 @@
         <button class="accordion">SEASON</button>
         <div class="panel" style="padding: 0px">
             <p>NEW YEAR - SAME SOUNDS.</p>
-            <p>REHERSALS EVERY OTHER FORTNIGHT.</p>
+            <p>REHEARSALS EVERY FORTNIGHT.</p>
             <article id="calendarArticle" style="display: flex; justify-content: center">
             
         <table id="calendar" class="noselect">
@@ -44,18 +43,18 @@
             };
 
         
-        const events = [{"name":"Ringtone Workshop","date":"2025-05-20","time":"19:00","description":"been & gone :(","type":"performances","cancelled":"FALSE ","url":"https://lclo.otherkat.com/ringtoneworkshop/"},{"name":"Peckham Chamber Orchestra Summer Concert","date":"2025-08-20","time":"19:00","description":"been & gone :(","type":"performances","cancelled":"FALSE","url":"https://peckhamchamberorchestra.co.uk/"},{"name":"Start Up - Sounds","date":"2025-02-10","time":"19:00","description":"been & gone :(","type":"performances","cancelled":"FALSE","url":"https://www.instagram.com/p/DOyXWY-CH2W/"},{"name":"This Is Not A Workshop","date":"2025-11-21","time":"19:00","description":"been & gone :(","type":"performances","cancelled":"FALSE","url":null},{"name":"Rehersal","date":"2026-02-26","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null},{"name":"Rehersal","date":"2026-03-12","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null},{"name":"Rehersal","date":"2026-03-19","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null},{"name":"Against the Clock","date":"2026-03-20","time":"19:30","description":"@ Vespers Club, Peckham, SE15 4BQ","type":"performances","cancelled":"FALSE","url":"https://gel.now/events/73"},{"name":"Rehersal","date":"2026-03-26","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"TRUE","url":null},{"name":"Rehersal","date":"2026-04-09","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null},{"name":"Rehersal","date":"2026-04-23","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null}];
+        const events = [{"name":"Ringtone Workshop","date":"2025-05-20","time":"19:00","description":"been & gone :(","type":"performances","cancelled":"FALSE ","url":"https://lclo.otherkat.com/ringtoneworkshop/"},{"name":"Peckham Chamber Orchestra Summer Concert","date":"2025-08-20","time":"19:00","description":"been & gone :(","type":"performances","cancelled":"FALSE","url":"https://peckhamchamberorchestra.co.uk/"},{"name":"Start Up - Sounds","date":"2025-02-10","time":"19:00","description":"been & gone :(","type":"performances","cancelled":"FALSE","url":"https://www.instagram.com/p/DOyXWY-CH2W/"},{"name":"This Is Not A Workshop","date":"2025-11-21","time":"19:00","description":"been & gone :(","type":"performances","cancelled":"FALSE","url":null},{"name":"Rehersal","date":"2026-02-26","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null},{"name":"Rehersal","date":"2026-03-12","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null},{"name":"Rehersal","date":"2026-03-19","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null},{"name":"Against the Clock","date":"2026-03-20","time":"19:30","description":"@ Vespers Club, Peckham, SE15 4BQ","type":"performances","cancelled":"FALSE","url":"https://gel.now/events/73"},{"name":"Rehersal","date":"2026-03-26","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"TRUE","url":null},{"name":"Rehersal","date":"2026-04-09","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null},{"name":"Rehersal","date":"2026-04-23","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null},{"name":"Rehersal","date":"2026-05-07","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null},{"name":"Rehersal","date":"2026-05-21","time":"19:00","description":"@ the Barbican. Whatsapp group for details. Bring a laptop!!!","type":"rehersals","cancelled":"FALSE","url":null}];
         const eventsByDate = {}
         events.forEach(event => {eventsByDate[event.date] = event})
         const now = new Date()
 
-
         function showPerformances() {
+
              const performanceDiv = document.querySelector('#performanceContent')
              const upcoming = document.createElement('div')
-             upcoming.innerHTML = '<h3>Soon</h3>'
+             upcoming.innerHTML = '<h4>[ SOON ]</h4>'
              const archive = document.createElement('div')
-             archive.innerHTML = '<h3>Past</h3>'
+             archive.innerHTML = '<h4>[ PAST ]</h4>'
 
              let upcomingEvents = 0
              let pastEvents = 0
@@ -65,6 +64,7 @@
                  if (event.type === 'performances') {
                     const eventListing = document.createElement('span')
                     const eventDate = new Date(event.date)
+
                     let href = ''
                     if (event.url != null) {href = `<a target='_blank' href='${event.url}'>`}
 
@@ -72,8 +72,8 @@
                         ${eventDate.getDate()}/${eventDate.getMonth() + 1}/${eventDate.getFullYear()}
                         - ${event.time} - ${href}${event.name}</a><br>${event.description}<br><br>`
 
-                    const eventPassed = now.getTime() > eventDate.getTime() ? true : false
-                    console.log(event, eventPassed)
+                    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+                    const eventPassed = today.getTime() > eventDate.getTime() ? true : false
 
                     if (eventPassed) {
                         eventListing.classList.add('pastEvents')
@@ -280,7 +280,7 @@
                                 })
 
                                 cell.addEventListener('mousedown', () => {
-                                    if (day?.event.url != '') {
+                                    if (day?.event.url != null) {
                                         window.location.href = day.event.url
                                     }
                                 } )
@@ -290,7 +290,7 @@
 
                                 cell.addEventListener('mouseover', () => {displayEvent(day.event)})
                                 cell.addEventListener('mouseout', () => {unDisplayEvent()})
-                                if (day?.event.url != '') {
+                                if (day?.event.url != null) {
                                     cell.addEventListener('click',  () => {window.location.href = day.event.url})
                                 }
 
@@ -352,7 +352,7 @@
                         refreshUI()
                     })
                     subscribeButton.addEventListener('click', function() {
-                        window.location.href = "webcal://calendar.ics"
+                        window.location.href = "webcal://lclo.otherkat.com/calendar.ics"
                     })
 
 
@@ -416,6 +416,7 @@
         height: 25px;
     }
     table {
+
         font-family: 'Courier New';
         margin-bottom: 60px;
         border-collapse: collapse;
@@ -501,17 +502,18 @@
 
      .pastEvents {
          opacity: 0.8;
+         text-decoration: line-through;
          filter: saturate(50%)
      }
 
     .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Old versions of Firefox */
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
             -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+            user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
     }
 
 
@@ -550,14 +552,14 @@
     
     <section class="section">
         <button class="accordion">PERFORMANCES</button>
-        <div class="panel" id="performanceContent">
+        <div class="panel">
+            <article id="performanceContent"></article>
         </div>
     </section>
 
     <section id="contact" class="section">
         <button class="accordion">CONTACT</button>
         <div class="panel">
-        <article>
             <p>WHATSAPP <a href="https://chat.whatsapp.com/EXVoMvmAwFSIWxQ8vN5OXa">CHAT WITH US</a></p>
             <p>ARE.NA <a href="https://www.are.na/kat-macdonald/london_community_laptop_orchestra">ADD TO OUR BOARD</a></p>
             <p>INSTAGRAM <a href="https://www.instagram.com/londoncommunitylaptoporchestra/">UPDATES</a></p>
@@ -565,11 +567,10 @@
             <form action="https://buttondown.com/api/emails/embed-subscribe/londoncommunitylaptoporchestra" method="post" target="popupwindow" onsubmit="window.open('https://buttondown.com/londoncommunitylaptoporchestra', 'popupwindow')" class="embeddable-buttondown-form">
                 <p style="margin-bottom: 0px">MAILING LIST</p>
                 <div class="flex" style="width: 100%; justify-content: center; align-items: center; margin-bottom: 5px;">
-                    <input type="email" name="email" id="bd-email" style="width: 60%; max-width: 60vw; font-size: 2rem;margin-right: 4px; border-radius: 0px; border: 0px solid #00000000; padding: 0.75rem " />
-                    <input type="submit" value="Subscribe" style="padding: 0.75rem 1.25rem; font-size: 2rem; background-color: #efd153; border: none; cursor: pointer; margin-top: 0.5em; margin-bottom: 0.5em" />
+                    <input type="email" name="email" id="bd-email" />
+                    <input type="submit" value="Subscribe" id="subscribeButton" />
                 </div>
             </form>
-        </article>
         </div>
     </section>
     <hr />
@@ -593,9 +594,8 @@
 </script>
 
 
-    </main>
 </body>
-<div class="logo">
+    <div class="logo">
       <a href="about">
       <img src="/assets/img/logo/lclologo.gif" alt="london community laptop orchestra clowelcome" height="auto" width="50%"></a>
 </div>

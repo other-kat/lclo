@@ -11,12 +11,15 @@
 
 
 body {
+    font-family: Cotham;
+    background-color: #1b1b1b;
     cursor: url('/assets/img/logo/logo-tiny.png'), auto;
-   text-align: center;
-   word-spacing: 20px;
-   margin: 0px;
-   padding: 3px;
-   font-size: 30pt;
+    text-align: center;
+    word-spacing: 25px;
+    margin: 0px;
+    padding: 3px;
+    font-size: 3.5em;
+    color: #FFFFFF;
 }
 
 hr {
@@ -27,89 +30,61 @@ p {
     margin-top: 0.5em;
     margin-bottom: 0.5em;
 }
+
 /*header style*/
 header {
-   text-align: center; 
-   padding: 20px;
-   color: #FFFFFF;
-   font-size: 2vw;
+    padding: 20px;
+    color: #FFFFFF;
+    font-size: 2vw;
 }
 
-.responsive {
-  width: 100%;
-  max-width: 300px;
-  height: 100%;
-  max-height: 300px;
-}
-
-/*navigation menu style*/
-nav {
-   text-align: center;
-   word-spacing: 30px;
-   font-size: 2vw;
-   Padding: 10px;
-   color: #FFFFFF;
-   accent-color: #FFFFFF;
-}
-main {
-   text-align: center;
-   word-spacing: 5px;
-   color: #FFFFFF;
-}
-h2, h3, h4 {
-   text-align: center;
-   margin-left: 5px;
-   word-spacing: 5px;
-   Padding: 2px;
-   color: #FFFFFF;
-   font-size: 50pt;
+h1, h2, h3, h4 {
+    text-align: center;
+    margin-left: 5px;
+    word-spacing: 5px;
+    Padding: 2px;
+    font-size: 50pt;
 }
 
 #LCLOHeader {
     margin-top: 0.3em;
     margin-bottom: 0.3em;
-
     font-size: 5em;
 }
 
+/* these are the individual words in the LCLO title */
 .title {
-   text-align: center;
-   margin-left: 5px;
-   word-spacing: 5px;
-   Padding: 2px;
-   color: #FFFFFF;
-   text-decoration: none;
-   transition: 0.1s
+    text-align: center;
+    margin-left: 5px;
+    padding: 2px;
+    color: #FFFFFF;
+    text-decoration: none;
+    transition: 0.1s
 }
+
 .title:hover {
     color:#efd153;
-    text-shadow: 0 0 1vw white;
+    text-shadow: 0 0 1rem white;
     text-decoration: none;
 }
+
 article {
-   text-align: center;
-   word-spacing: 20px;
-   padding: 10px;
-   border-bottom: 1px solid white;
-   margin-bottom: 10px;
+    text-align: center;
+    word-spacing: 20px;
+    padding: 10px;
+    border-bottom: 1px solid white;
+    margin-bottom: 10px;
 }
+
 a {
-   color: #efd153;
+    color: #efd153;
 }
 a:hover {
     color:#FFFFFF;
-    text-shadow: 0 0 1vw efd153;
+    text-shadow: 0 0 1vw #efd153;
 }
 .profile h1 {
-   text-align: center;
-}
-/*footer style*/
-footer {
-   text-align: left; 
-   font-size: smaller;
-   font-size: 5vw;
-   padding: 20px;
-   color: #FFFFFF;
+    text-align: center;
 }
 
 form {
@@ -118,6 +93,7 @@ form {
 
 
 
+/* these are the main buttons on the homepage */
 .accordion {
     display: flex;
     align-items: center;
@@ -125,85 +101,101 @@ form {
     cursor: pointer;
     font-family: Cotham;
     color: #FFFFFF;
-    font-size: 5vw;
-    padding: 18px;
+    font-size: 1em;
+    padding: 0.7em;
     width: 100%;
     border: none;
-    outline: none;
-    transition: 0.2s ease-in;
+    transition: 0.15s ease-in;
     background-color: rgba(255, 255, 255, 0);
 }
+
 .active, .accordion:hover {
-  background-color: #FFFFFF;
-  color:#000000;
+    background-color: #FFFFFF;
+    color:#000000;
 }
+
 .panel {
-  padding: 0 18px;
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.2s ease-out;
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.1s ease-in;
 }
-.logo {
-    margin-top: 25px;
-}
+
+
 .responsive {
-  flex: 0 0 auto;
-  align-content: center;
-  max-width: 30vw;
-  display: flex;
-  align-items: center; /* Centers logo content */
+    flex: 0 0 auto;
+    align-content: center;
+    max-width: 30vw;
+    display: flex;
+    align-items: center; /* Centers logo content */
 }
 .responsive img {
-  width: 100%;
-  height: auto;
-  display: block;
+    width: 100%;
+    height: auto;
+    display: block;
 }
 
 
 #calendarArticle {
-    padding-left: 0px;
-    padding-right: 0px
+    padding-inline: 0;
 }
 
 #performanceContent {
     text-align: left;
 }
 
-:root {
-   font-family: Cotham;
-   color: #1e1e1e;
-   background-color: #1b1b1b;
+#bd-email {
+    background-color: #00000000;
+    border: 1px solid white;
+    padding: 0.75rem;
+    color: white;
+    width: 60%;
+    max-width: 60vw;
+    font-size: 2rem;
+    margin-right: 4px;
+    border-radius: 0px;
+}
+
+#subscribeButton {
+    padding: 0.75rem 1.25rem;
+    font-size: 2rem;
+    background-color: #00000000;
+    border: 1px solid #efd153;
+    cursor: pointer;
+    margin-top: 0.5em;
+    color: white
+}
+
+#subscribeButton:hover {
+
+    background-color: #efd153;
+    color: black;
+}
+
+.logo {
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 
 @media only screen and (max-width: 700px) {
-  body {
-    font-size: 7vw;
-    padding: 0px;
-  }
-  h1 {
-   font-size: 7vw;
-  }
-  h2 {
-   font-size: 7vw;
-  }
-  h3 {
-   font-size: 7vw;
-  }
-  h4 {
-   font-size: 7vw;
-  }
-  .accordion {
-   font-size: 7vw;
-  }
-  main {
-   font-size: 7vw;
-  }
-  article {
-   padding: 0px;
-  }
-  img {
-    max-width:50%;
-}
+
+    body {
+        font-size: 7vw;
+        padding: 0px;
+    }
+
+    h1, h2, h3, h4, .accordian, main {
+        font-size: 7vw;
+    }
+
+    article {
+        padding: 0px;
+    }
+
+    img {
+        max-width:50%;
+    }
+
 }
 
 @media (min-width: 700px) {

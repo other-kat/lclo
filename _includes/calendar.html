@@ -17,13 +17,13 @@
         events.forEach(event => {eventsByDate[event.date] = event})
         const now = new Date()
 
-
         function showPerformances() {
+
              const performanceDiv = document.querySelector('#performanceContent')
              const upcoming = document.createElement('div')
-             upcoming.innerHTML = '<h3>Soon</h3>'
+             upcoming.innerHTML = '<h4>[ SOON ]</h4>'
              const archive = document.createElement('div')
-             archive.innerHTML = '<h3>Past</h3>'
+             archive.innerHTML = '<h4>[ PAST ]</h4>'
 
              let upcomingEvents = 0
              let pastEvents = 0
@@ -33,6 +33,7 @@
                  if (event.type === 'performances') {
                     const eventListing = document.createElement('span')
                     const eventDate = new Date(event.date)
+
                     let href = ''
                     if (event.url != null) {href = `<a target='_blank' href='${event.url}'>`}
 
@@ -40,8 +41,8 @@
                         ${eventDate.getDate()}/${eventDate.getMonth() + 1}/${eventDate.getFullYear()}
                         - ${event.time} - ${href}${event.name}</a><br>${event.description}<br><br>`
 
-                    const eventPassed = now.getTime() > eventDate.getTime() ? true : false
-                    console.log(event, eventPassed)
+                    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+                    const eventPassed = today.getTime() > eventDate.getTime() ? true : false
 
                     if (eventPassed) {
                         eventListing.classList.add('pastEvents')
@@ -248,7 +249,7 @@
                                 })
 
                                 cell.addEventListener('mousedown', () => {
-                                    if (day?.event.url != '') {
+                                    if (day?.event.url != null) {
                                         window.location.href = day.event.url
                                     }
                                 } )
@@ -258,7 +259,7 @@
 
                                 cell.addEventListener('mouseover', () => {displayEvent(day.event)})
                                 cell.addEventListener('mouseout', () => {unDisplayEvent()})
-                                if (day?.event.url != '') {
+                                if (day?.event.url != null) {
                                     cell.addEventListener('click',  () => {window.location.href = day.event.url})
                                 }
 
@@ -320,7 +321,7 @@
                         refreshUI()
                     })
                     subscribeButton.addEventListener('click', function() {
-                        window.location.href = "webcal://calendar.ics"
+                        window.location.href = "webcal://lclo.otherkat.com/calendar.ics"
                     })
 
 
@@ -384,6 +385,7 @@
         height: 25px;
     }
     table {
+
         font-family: 'Courier New';
         margin-bottom: 60px;
         border-collapse: collapse;
@@ -469,17 +471,18 @@
 
      .pastEvents {
          opacity: 0.8;
+         text-decoration: line-through;
          filter: saturate(50%)
      }
 
     .noselect {
-    -webkit-touch-callout: none; /* iOS Safari */
-        -webkit-user-select: none; /* Safari */
-        -khtml-user-select: none; /* Konqueror HTML */
-        -moz-user-select: none; /* Old versions of Firefox */
+            -webkit-touch-callout: none; /* iOS Safari */
+            -webkit-user-select: none; /* Safari */
+            -khtml-user-select: none; /* Konqueror HTML */
+            -moz-user-select: none; /* Old versions of Firefox */
             -ms-user-select: none; /* Internet Explorer/Edge */
-                user-select: none; /* Non-prefixed version, currently
-                                    supported by Chrome, Edge, Opera and Firefox */
+            user-select: none; /* Non-prefixed version, currently
+                                supported by Chrome, Edge, Opera and Firefox */
     }
 
 

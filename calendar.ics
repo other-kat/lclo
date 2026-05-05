@@ -5,13 +5,17 @@ permalink: /calendar.ics
 BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//{{ site.title }}//Calendar 1.0//EN
+METHOD:PUBLISH
+X-WR-CALNAME:London Community Laptop Orchestra
+X-WR-CALDESC:We are a community based laptop orchestra open to anyone who's interested. No experience required. Only a laptop.
+X-WR-TIMEZONE:Europe/London
 {% assign events = site.data.calendar %}
 {% for event in events %}
 BEGIN:VEVENT
 UID:event-{{ forloop.index }}@{{ site.url | replace: 'http://', '' | replace: 'https://', '' }}
 DTSTAMP:{{ 'now' | date: "%Y%m%dT%H%M%SZ" }}
 DTSTART;TZID=Europe/London:{{ event.date | date: "%Y%m%d" }}T{{ event.time | remove: ":" }}00
-DTEND;TZID=Europe/London:{{ event.date | date: "%Y%m%d" }}T{% assign end_hour = event.time | split: ":" | first | plus: 1 %}{{ end_hour }}{{ event.time | split: ":" | last }}00
+DTEND;TZID=Europe/London:{{ event.date | date: "%Y%m%d" }}T{% assign end_hour = event.time | split: ":" | first | plus: 1 %}{{ end_hour | prepend: '0' | slice: -2, 2 }}{{ event.time | split: ":" | last }}00
 SUMMARY:{% if event.cancelled == 'true' %}CANCELLED - {% endif %}LCLO - {{ event.name | default: "Event" }}
 DESCRIPTION:{{ event.description | escape }}
 END:VEVENT
