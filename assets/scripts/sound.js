@@ -18,6 +18,8 @@ class soundManager {
         this.tracks.push(sevenfourone)
         this.tracks.push(eightfivetwo)
 
+        this.lastTouchX = 0;
+        this.lastTouchY = 0;
     }
 
     async start() {
@@ -48,13 +50,18 @@ class soundManager {
         const main = document.querySelector('main')
 
         main.addEventListener('mousedown', (e) =>   {this.setSelectedTrack(e)})
-        main.addEventListener('touchstart', (e) =>  {this.setSelectedTrack(e)})
-
         main.addEventListener('mousemove', (e) =>   {this.modifySelectedTrack(e)})
-        main.addEventListener('touchmove', (e) =>   {this.modifySelectedTrack(e)})
+        main.addEventListener('mouseup', () =>      {this.selectedTrack = null})
 
-        main.addEventListener('mouseup', () =>      {this.selectedTrack = null})
-        main.addEventListener('mouseup', () =>      {this.selectedTrack = null})
+        main.addEventListener('touchstart', (e) => {
+            if (e.touches.length > 0) {
+                this.lastTouchX = e.touches[0].clientX;
+                this.lastTouchY = e.touches[0].clientY;
+            }
+            this.setSelectedTrack(e);
+        }, { passive: false });
+        main.addEventListener('touchmove', (e) =>   {this.modifySelectedTrack(e)})
+        main.addEventListener('touchend', () => { this.selectedTrack = null; });
 
     }
 
@@ -76,8 +83,24 @@ class soundManager {
     modifySelectedTrack(e) {
         if (!this.selectedTrack) {return}
 
-        this.selectedTrack.changeVolume(e.movementY * 1.1)
-        this.selectedTrack.changePitch((e.movementX * 0.2) * -1)
+        let movementX = 0;
+        let movementY = 0;
+
+        if (e.touches && e.touches.length > 0) {
+            e.preventDefault();
+
+            movementX = e.touches[0].clientX - this.lastTouchX;
+            movementY = e.touches[0].clientY - this.lastTouchY;
+
+            this.lastTouchX = e.touches[0].clientX;
+            this.lastTouchY = e.touches[0].clientY;
+        } else {
+            movementX = e.movementX;
+            movementY = e.movementY;
+        }
+
+        this.selectedTrack.changeVolume(movementY * 1.1);
+        this.selectedTrack.changePitch((movementX * 0.2) * -1);
     }
 
 }
