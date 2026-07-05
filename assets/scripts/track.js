@@ -15,7 +15,7 @@ export class Track {
         this.varyDirection    = Math.random() < 0.5 ? 1 : -1;
         this.varySpeed        = getRandomArbitrary(0.1, 1)
         this.osc              = new Tone.Oscillator(pitch, "sine").toDestination();
-        this.osc.volume.value = Math.random() < 0.25 ? getRandomInt(-50, -25) : this.minVol;
+        this.osc.volume.value = Math.random() < 0.30 ? getRandomInt(-50, -25) : this.minVol;
         this.waveScale        = 0.01
 
         this.prevVolume       = null

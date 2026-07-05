@@ -32,6 +32,7 @@ class soundManager {
         }
         document.getElementById('notification').style.display = 'none'
         document.getElementById('stats').style.display = 'block'
+        document.getElementById('muteButton').style.display = 'block'
         setInterval(() => {this.drawStats()}, 10)
         this.addCanvasControls()
 
