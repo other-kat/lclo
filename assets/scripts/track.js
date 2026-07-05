@@ -8,13 +8,18 @@ export class Track {
         function getRandomArbitrary(min, max) {
         return Math.random() * (max - min) + min;
         }
+
+        this.minVol          = -70
         this.basePitch        = pitch;
         this.pitch            = pitch + getRandomInt(-20,20);
         this.varyDirection    = Math.random() < 0.5 ? 1 : -1;
         this.varySpeed        = getRandomArbitrary(0.1, 1)
         this.osc              = new Tone.Oscillator(pitch, "sine").toDestination();
-        this.osc.volume.value = getRandomInt(-60, -30);
+        this.osc.volume.value = Math.random() < 0.25 ? getRandomInt(-50, -25) : this.minVol;
         this.waveScale        = 0.01
+
+        this.prevVolume       = null
+        this.muted            = false
 
         this.createCanvas();
 
@@ -33,9 +38,19 @@ export class Track {
     changeVolume(amount) {
         this.osc.volume.value += amount
         if (this.osc.volume.value > -4) {this.osc.volume.value = -4}
-        if (this.osc.volume.value < -60) {this.osc.volume.value = -60}
+        if (this.osc.volume.value < this.minVol) {this.osc.volume.value = this.minVol}
+        if (this.osc.volume.value === this.minVol) {this.muted = true} else {this.muted = false}
+    }
 
+    mute() {
+        this.muted = true
+        this.prevVolume = this.osc.volume.value
+        this.osc.volume.value = this.minVol
+    }
 
+    unmute() {
+        this.muted = false
+        this.osc.volume.value = this.prevVolume
     }
 
     changePitch(amount) {
@@ -65,13 +80,13 @@ export class Track {
         this.ctx.beginPath();
         this.ctx.lineWidth = 2;
         this.ctx.strokeStyle = "rgb(250,250,250)";
-        if (this.nearBasePitch) {
-            this.ctx.strokeStyla = "rgb(244,218,104)";
+        if (this.isAtBasePitch() && !this.muted) {
+            this.ctx.strokeStyle = "rgb(244,218,104)";
         }
 
         let x = 0;
         let y = 0;
-        const amplitude = (60 + this.osc.volume.value);
+        const amplitude = ((this.minVol * -1) + this.osc.volume.value);
 
         while (x < width) {
             y = height / 2 + amplitude * Math.sin(x * this.waveScale * (this.pitch / 70));
@@ -94,19 +109,20 @@ export class Track {
 
     varyFrequency() {
 
-        if (this.pitch < this.basePitch + 0.5 && this.pitch > this.basePitch - 0.5) {
-            this.nearBasePitch = true
-        } else {this.nearBasePitch = false}
-
-        this.pitch = this.pitch + ((this.varyDirection * 0.1) * (this.varySpeed * (this.nearBasePitch ? 0.15 : 1))) ;
+        this.pitch = this.pitch + ((this.varyDirection * 0.1) * (this.varySpeed * (this.isAtBasePitch() ? 0.15 : 1))) ;
         if (this.pitch > this.basePitch + 20 ) {
             this.varyDirection = -1;
         }
         if (this.pitch < this.basePitch - 20 ) {
             this.varyDirection = 1;
         }
+
         this.osc.frequency.value = this.pitch;
         this.drawWaveform();
+    }
+
+    isAtBasePitch() {
+        return (Math.round(this.pitch) === Math.round(this.basePitch))
     }
 
 }

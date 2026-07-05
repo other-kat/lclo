@@ -14,21 +14,22 @@
         <main id='waveformContainer'></main>
         <div id='notification'><div style='width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center'>Click / Tap to begin tones.<br>Drag to change volume & frequency.<br>Protect your hearing, don't use headphones!</div></div>
         <div id='stats'><div style='width: 25vw; height: 25vh; display: flex; align-items: center; justify-content: center'></div></div>
+        <button id='muteButton'>Mute</button>
 
     </body>
     <style>
     canvas {
         width: 100vw;
-        height: 20vh;
+        height: 19vh;
     }
     body {
         font-family: Courier New;
         margin: 0px;
         background-color: rgb(27,27,27);
+        color: white;
     }
     #notification, #stats {
         position: absolute;
-        color: white;
         top: 0vh;
         left: 0vw;
 
@@ -45,6 +46,22 @@
     .yellow {
 
         color: rgb(244,218,104)
+    }
+
+    #muteButton {
+        all: unset;
+        position: absolute;
+        padding: 1vw;
+        cursor: pointer;
+        left: 93vw;
+        top: 1vw;
+        font-size: 1em;
+        background-color: rgba(30,30,30)
+
+    }
+
+    #muteButton:active {
+        background-color: #7d0b17;
     }
     </style>
 </html>

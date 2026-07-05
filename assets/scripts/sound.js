@@ -41,7 +41,8 @@ class soundManager {
         const stats = document.getElementById('stats')
         stats.innerHTML = ''
         for (const track of this.tracks) {
-            stats.innerHTML += `<div class='${track.nearBasePitch ? 'yellow' : ''}'>${track.pitch.toFixed(0)}hz | ${track.osc.volume.value.toFixed(0)}</div>`
+            const drawYellow = (track.isAtBasePitch() && !track.muted)
+            stats.innerHTML += `<div class='${drawYellow ? 'yellow' : ''}'>${Math.round(track.pitch)}hz | ${track.osc.volume.value.toFixed(0)}</div>`
         }
     }
 
@@ -63,6 +64,17 @@ class soundManager {
         main.addEventListener('touchmove', (e) =>   {this.modifySelectedTrack(e)})
         main.addEventListener('touchend', () => { this.selectedTrack = null; });
 
+        const muteButton = document.getElementById('muteButton')
+        muteButton.addEventListener('mousedown', () => {this.mute()})
+        muteButton.addEventListener('mouseup',   () => {this.unmute()})
+
+    }
+
+    mute() {
+        this.tracks.forEach(track => {track.mute()})
+    }
+    unmute() {
+        this.tracks.forEach(track => {track.unmute()})
     }
 
     setSelectedTrack(e) {
