@@ -89,3 +89,9 @@ document.addEventListener('click', async function() {
         await sound.start()
     }
 })
+
+document.addEventListener('touchdown', async function() {
+    if (!sound.started) {
+        await sound.start()
+    }
+})

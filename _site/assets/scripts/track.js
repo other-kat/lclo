@@ -28,22 +28,6 @@ export class Track {
         this.ctx    = this.canvas.getContext('2d');
         document.getElementById('waveformContainer').appendChild(this.canvas);
         this.canvas.dataset.basePitch = this.basePitch
-        // this.addCanvasControls()
-    }
-
-    addCanvasControls() {
-
-        let changingAmp = false
-        this.canvas.addEventListener('mousedown', function() {changingAmp = true})
-        this.canvas.addEventListener('mouseup',   function() {changingAmp = false})
-        this.canvas.addEventListener('mouseleave',function() {changingAmp = false})
-        this.canvas.addEventListener('mousemove', (e) =>     {
-            if (changingAmp) {
-                this.changeVolume(e.movementY * 1.1)
-                this.changePitch((e.movementX * 0.2) * -1)
-            }
-        })
-
     }
 
     changeVolume(amount) {
