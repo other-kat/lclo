@@ -1,0 +1,36 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>LCLO</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+        <script src="https://unpkg.com/tone"></script>
+    </head>
+    <body>
+        <script src='/assets/scripts/sound.js' type='module'></script>
+        <main id='waveformContainer'></main>
+        <div id='notification'><div style='width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center'>Click / Tap to Start.</div></div>
+
+    </body>
+    <style>
+    canvas {
+        width: 100vw;
+        height: 20vh;
+    }
+    body {
+        font-family: Courier New;
+        margin: 0px;
+        background-color: black;
+    }
+    #notification {
+        position: absolute;
+        color: white;
+        top: 0vh;
+        left: 0vw;
+
+    }
+    </style>
+</html>
