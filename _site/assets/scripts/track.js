@@ -66,7 +66,7 @@ export class Track {
         this.ctx.lineWidth = 2;
         this.ctx.strokeStyle = "rgb(250,250,250)";
         if (this.nearBasePitch) {
-            this.ctx.strokeStyle = "rgb(244,218,104)";
+            this.ctx.strokeStyla = "rgb(244,218,104)";
         }
 
         let x = 0;
@@ -105,11 +105,8 @@ export class Track {
         if (this.pitch < this.basePitch - 20 ) {
             this.varyDirection = 1;
         }
-        this.setFrequency(this.pitch);
+        this.osc.frequency.value = this.pitch;
         this.drawWaveform();
     }
 
-    setFrequency(newPitch, time = 0.02) {
-        this.osc.frequency.rampTo(newPitch, time);
-    }
 }
