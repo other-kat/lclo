@@ -13,7 +13,7 @@ export class Track {
         this.varyDirection    = Math.random() < 0.5 ? 1 : -1;
         this.varySpeed        = getRandomArbitrary(0.1, 1)
         this.osc              = new Tone.Oscillator(pitch, "sine").toDestination();
-        this.osc.volume.value = getRandomInt(-60, -4);
+        this.osc.volume.value = getRandomInt(-60, -30);
         this.waveScale        = 0.01
 
         this.createCanvas();

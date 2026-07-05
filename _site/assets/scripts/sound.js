@@ -107,5 +107,5 @@ class soundManager {
 
 const sound = new soundManager()
 
-document.addEventListener('click',     async function() {if (!sound.started) {await sound.start()}})
-document.addEventListener('touchdown', async function() {if (!sound.started) {await sound.start()}})
+document.addEventListener('click',      async function() {if (!sound.started) {await sound.start()}})
+document.addEventListener('touchstart', async function() {if (!sound.started) {await sound.start()}})
