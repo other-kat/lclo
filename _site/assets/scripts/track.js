@@ -104,8 +104,11 @@ export class Track {
 
     varyFrequency() {
         this.pitch = this.pitch + (this.varyDirection * 0.1) ;
-        if (this.pitch === this.basePitch + 20 || this.pitch === this.basePitch - 20) {
-            this.varyDirection = this.varyDirection * -1;
+        if (this.pitch > this.basePitch + 20 ) {
+            this.varyDirection = -1;
+        }
+        if (this.pitch < this.basePitch - 20 ) {
+            this.varyDirection = 1;
         }
         this.setFrequency(this.pitch);
         this.drawWaveform();

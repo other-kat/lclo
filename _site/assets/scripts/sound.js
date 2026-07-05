@@ -8,13 +8,13 @@ class soundManager {
         const threeninesix = new Track(396)
         const sixthreenine = new Track(639)
         const sevenfourone = new Track(741)
-        const eighthundred = new Track(800)
+        const eightfivetwo = new Track(852)
 
         this.tracks.push(twoeightfive)
         this.tracks.push(threeninesix)
         this.tracks.push(sixthreenine)
         this.tracks.push(sevenfourone)
-        this.tracks.push(eighthundred)
+        this.tracks.push(eightfivetwo)
 
     }
 
