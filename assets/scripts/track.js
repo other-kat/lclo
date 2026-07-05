@@ -13,7 +13,8 @@ export class Track {
         this.varyDirection    = Math.random() < 0.5 ? 1 : -1;
         this.varySpeed        = getRandomArbitrary(0.1, 1)
         this.osc              = new Tone.Oscillator(pitch, "sine").toDestination();
-        this.osc.volume.value = getRandomInt(-50, -4);
+        this.osc.volume.value = getRandomInt(-60, -4);
+        this.waveScale        = 0.01
 
         this.createCanvas();
 
@@ -37,7 +38,7 @@ export class Track {
         this.canvas.addEventListener('mouseleave',function() {changingAmp = false})
         this.canvas.addEventListener('mousemove', (e) =>     {
             if (changingAmp) {
-                this.changeVolume(e.movementY)
+                this.changeVolume(e.movementY * 1.1)
                 this.changePitch((e.movementX * 0.2) * -1)
             }
         })
@@ -45,11 +46,9 @@ export class Track {
     }
 
     changeVolume(amount) {
-        if (this.osc.volume.value < -49 && amount < 0) {return}
-        if (this.osc.volume.value > -4 && amount > 0) {return}
         this.osc.volume.value += amount
         if (this.osc.volume.value > -4) {this.osc.volume.value = -4}
-        if (this.osc.volume.value < -50) {this.osc.volume.value = -50}
+        if (this.osc.volume.value < -60) {this.osc.volume.value = -60}
 
 
     }
@@ -87,11 +86,10 @@ export class Track {
 
         let x = 0;
         let y = 0;
-        const amplitude = (50 + this.osc.volume.value);
-        const waveScale = 0.01;
+        const amplitude = (60 + this.osc.volume.value);
 
         while (x < width) {
-            y = height / 2 + amplitude * Math.sin(x * waveScale * (this.pitch / 70));
+            y = height / 2 + amplitude * Math.sin(x * this.waveScale * (this.pitch / 70));
 
             if (x === 0) {
                 this.ctx.moveTo(x, y);

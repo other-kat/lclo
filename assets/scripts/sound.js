@@ -1,5 +1,7 @@
 import { Track } from './track.js'
+
 class soundManager {
+
     constructor() {
 
         this.tracks = []
