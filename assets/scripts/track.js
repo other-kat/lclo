@@ -27,7 +27,8 @@ export class Track {
         this.canvas = document.createElement('canvas');
         this.ctx    = this.canvas.getContext('2d');
         document.getElementById('waveformContainer').appendChild(this.canvas);
-        this.addCanvasControls()
+        this.canvas.dataset.basePitch = this.basePitch
+        // this.addCanvasControls()
     }
 
     addCanvasControls() {
