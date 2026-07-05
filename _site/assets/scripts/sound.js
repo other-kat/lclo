@@ -36,7 +36,7 @@ class soundManager {
         const stats = document.getElementById('stats')
         stats.innerHTML = ''
         for (const track of this.tracks) {
-            stats.innerHTML += `<div>${track.pitch.toFixed(0)}hz | ${track.osc.volume.value.toFixed(0)}</div>`
+            stats.innerHTML += `<div class='${track.nearBasePitch ? 'yellow' : ''}'>${track.pitch.toFixed(0)}hz | ${track.osc.volume.value.toFixed(0)}</div>`
         }
     }
 
