@@ -13,6 +13,7 @@
         <script src='/assets/scripts/sound.js' type='module'></script>
         <main id='waveformContainer'></main>
         <div id='notification'><div style='width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center'>Click / Tap to Start.</div></div>
+        <div id='stats'><div style='width: 25vw; height: 25vh; display: flex; align-items: center; justify-content: center'></div></div>
 
     </body>
     <style>
@@ -23,14 +24,22 @@
     body {
         font-family: Courier New;
         margin: 0px;
-        background-color: black;
+        background-color: rgb(27,27,27);
     }
-    #notification {
+    #notification, #stats {
         position: absolute;
         color: white;
         top: 0vh;
         left: 0vw;
 
+    }
+
+    #stats {
+        display: none;
+        left: 1vw;
+        top: 1vw;
+        padding: 1em;
+        background-color: rgba(30,30,30)
     }
     </style>
 </html>

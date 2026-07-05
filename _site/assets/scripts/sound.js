@@ -27,8 +27,19 @@ class soundManager {
             await track.start();
         }
         document.getElementById('notification').style.display = 'none'
+        document.getElementById('stats').style.display = 'block'
+        setInterval(() => {this.drawStats()}, 10)
 
     }
+
+    drawStats() {
+        const stats = document.getElementById('stats')
+        stats.innerHTML = ''
+        for (const track of this.tracks) {
+            stats.innerHTML += `<div>${track.pitch.toFixed(0)}hz | ${track.osc.volume.value.toFixed(0)}</div>`
+        }
+    }
+
 }
 
 const sound = new soundManager()

@@ -34,6 +34,7 @@ export class Track {
         this.canvas.addEventListener('mousemove', (e) =>     {
             if (changingAmp) {
                 this.changeVolume(e.movementY)
+                this.changePitch((e.movementX * 0.2) * -1)
             }
         })
 
@@ -43,7 +44,16 @@ export class Track {
         if (this.osc.volume.value < -49 && amount < 0) {return}
         if (this.osc.volume.value > -4 && amount > 0) {return}
         this.osc.volume.value += amount
+        if (this.osc.volume.value > -4) {this.osc.volume.value = -4}
+        if (this.osc.volume.value < -50) {this.osc.volume.value = -50}
 
+
+    }
+
+    changePitch(amount) {
+        if (this.pitch < this.basePitch - 20 && amount < 0) {return}
+        if (this.pitch > this.basePitch + 20 && amount > 0) {return}
+        this.pitch = this.pitch + amount
     }
 
     resizeCanvas() {
@@ -66,7 +76,7 @@ export class Track {
         this.ctx.clearRect(0, 0, width, height);
         this.ctx.beginPath();
         this.ctx.lineWidth = 2;
-        this.ctx.strokeStyle = "#ffffff";
+        this.ctx.strokeStyle = "rgb(250,250,250)";
 
         let x = 0;
         let y = 0;
@@ -74,7 +84,7 @@ export class Track {
         const waveScale = 0.01;
 
         while (x < width) {
-            y = height / 2 + amplitude * Math.sin(x * waveScale * (this.pitch / 150));
+            y = height / 2 + amplitude * Math.sin(x * waveScale * (this.pitch / 70));
 
             if (x === 0) {
                 this.ctx.moveTo(x, y);
@@ -89,11 +99,11 @@ export class Track {
 
     start() {
         this.osc.start();
-        setInterval(() => { this.varyFrequency(); }, 100);
+        setInterval(() => { this.varyFrequency(); }, 20);
     }
 
     varyFrequency() {
-        this.pitch = this.pitch + this.varyDirection;
+        this.pitch = this.pitch + (this.varyDirection * 0.1) ;
         if (this.pitch === this.basePitch + 20 || this.pitch === this.basePitch - 20) {
             this.varyDirection = this.varyDirection * -1;
         }
@@ -101,7 +111,7 @@ export class Track {
         this.drawWaveform();
     }
 
-    setFrequency(newPitch, time = 0.05) {
+    setFrequency(newPitch, time = 0.02) {
         this.osc.frequency.rampTo(newPitch, time);
     }
 }
