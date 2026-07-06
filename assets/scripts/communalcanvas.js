@@ -36,21 +36,23 @@ class User {
 
     draw(ctx) {
 
-        const xOffset = getRandomArbitrary(-0.4,0.4)
-        const yOffset = getRandomArbitrary(-0.4,0.4)
+        // const xOffset = getRandomArbitrary(-0.4,0.4)
+        // const yOffset = getRandomArbitrary(-0.4,0.4)
+        const xOffset = 0
+        const yOffset = 0
         ctx.font = "9px Courier New";
         ctx.fillText(`${this.userIp}`, this.pos.x + 5 + xOffset, this.pos.y + 10 + yOffset);
         ctx.fillText(`${this.username} | p${this.pid}`, this.pos.x + 5 + xOffset, this.pos.y + 17 + yOffset);
         ctx.beginPath();
-        ctx.arc(this.pos.x + xOffset, this.pos.y + yOffset, 0.5, 0, 2 * Math.PI);
+        ctx.arc(this.pos.x + xOffset, this.pos.y + yOffset, 0.9, 0, 2 * Math.PI);
         ctx.stroke();
         ctx.fill()
     }
-    move(centrePoints) {
+    move(centrePoints, ctx) {
         if (!centrePoints) { return; }
         const vectorsByAudio = [];
 
-        this.tracks.forEach(track => {
+        this.tracks.forEach(track =>  {
             const trackPoint = centrePoints[track['bP'] || track['basePitch']];
 
             const targetX = trackPoint ? trackPoint.x : this.pos.x;
@@ -63,13 +65,17 @@ class User {
             let force = {
                 "x": (targetX - this.pos.x) * (volume * gravityStrength),
                 "y": (targetY - this.pos.y) * (volume  * gravityStrength),
+
             };
 
             if (volume < 2) {
                 force = {'x': 0, "y": 0}
+            } else {
+
+                vectorsByAudio.push(force);
             }
 
-            vectorsByAudio.push(force);
+
         });
 
         let finalForce = { "x": 0, "y": 0 };
@@ -94,6 +100,16 @@ class User {
 
         this.pos.x += this.vector.x;
         this.pos.y += this.vector.y;
+
+        vectorsByAudio.forEach(force => {
+
+            ctx.beginPath();
+            ctx.strokeStyle = `rgba(255, 255, 255, 0.23)`;
+
+            ctx.moveTo(this.pos.x, this.pos.y);
+            ctx.lineTo(this.pos.x + (force.x * 500), this.pos.y + (force.y * 500));
+            ctx.stroke()
+        })
 
         // Boundary constraints (bounce off the walls or stop at screen edges)
         if (this.pos.x > this.logicalWidth) { this.pos.x = this.logicalWidth; this.vector.x *= -1; }
@@ -159,7 +175,7 @@ export class CommunalCanvas {
 
             this.centrePoints[key] = { x: screenX, y: screenY };
 
-            this.ctx.fillStyle = 'rgba(255,255,255, 0.03)'
+            this.ctx.fillStyle = 'rgba(255,255,255, 0.1)'
             this.ctx.strokeStyle = 'rgba(255,255,255, 0.1)';
 
             this.ctx.beginPath();
@@ -210,7 +226,7 @@ export class CommunalCanvas {
         this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.95)';
         this.ctx.fillStyle = '#ffffff90'
         this.users.forEach(user => {
-            user.move(this.centrePoints)
+            user.move(this.centrePoints, this.ctx)
             user.draw(this.ctx)
             positions.push(user.pos)
         })
