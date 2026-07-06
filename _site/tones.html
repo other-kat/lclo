@@ -12,15 +12,31 @@
     <body>
         <script src='/assets/scripts/sound.js' type='module'></script>
         <main id='waveformContainer'></main>
-        <div id='notification'><div style='width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center'>Click / Tap to begin tones.<br>Drag to change volume & frequency.<br>Protect your hearing, don't use headphones!</div></div>
+        <div id='notification'><div style='width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center'><div><h1><< Slow Impulse | L.C.L.O.</h1> <br>Click / Tap to begin tones.<br>Drag to change volume & frequency.<br>Protect your hearing, don't use headphones!</div></div></div>
         <div id='stats'><div style='width: 25vw; height: 25vh; display: flex; align-items: center; justify-content: center'></div></div>
         <button id='muteButton'>Mute</button>
+        <canvas id='communalCanvas'></canvas>
 
     </body>
     <style>
     canvas {
         width: 100vw;
         height: 19vh;
+        z-index: 100;
+    }
+    #waveformContainer {
+        position: relative;
+        z-index: 10;
+    }
+    #communalCanvas {
+        width: 100vw !important;
+        height: 100vh !important;
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        touch-action: none;
+        pointer-events: none;
+        z-index: 1;
     }
     body {
         font-family: Courier New;
@@ -31,6 +47,7 @@
     #notification, #stats {
         position: absolute;
         top: 0vh;
+        z-index: 9999;
         left: 0vw;
 
 
@@ -50,6 +67,7 @@
 
     #muteButton {
         all: unset;
+        z-index: 9999;
         display: none;
         position: absolute;
         padding: 1vw;

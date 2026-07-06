@@ -1,25 +1,29 @@
+
+function getRandomInt(min, max) {
+    const minCeiled = Math.ceil(min);
+    const maxFloored = Math.floor(max);
+    return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
+}
+function getRandomArbitrary(min, max) {
+    return Math.random() * (max - min) + min;
+}
+
 export class Track {
     constructor(pitch) {
-        function getRandomInt(min, max) {
-            const minCeiled = Math.ceil(min);
-            const maxFloored = Math.floor(max);
-            return Math.floor(Math.random() * (maxFloored - minCeiled) + minCeiled); // The maximum is exclusive and the minimum is inclusive
-        }
-        function getRandomArbitrary(min, max) {
-        return Math.random() * (max - min) + min;
-        }
 
         this.minVol          = -70
         this.basePitch        = pitch;
         this.pitch            = pitch + getRandomInt(-20,20);
         this.varyDirection    = Math.random() < 0.5 ? 1 : -1;
-        this.varySpeed        = getRandomArbitrary(0.1, 1)
+        this.varySpeed        = 0.1
         this.osc              = new Tone.Oscillator(pitch, "sine").toDestination();
         this.osc.volume.value = Math.random() < 0.30 ? getRandomInt(-50, -25) : this.minVol;
-        this.waveScale        = 0.01
+        this.waveScale        = 0.006
 
         this.prevVolume       = null
         this.muted            = false
+
+        this.drawOffset       = 0
 
         this.createCanvas();
 
@@ -79,9 +83,10 @@ export class Track {
         this.ctx.clearRect(0, 0, width, height);
         this.ctx.beginPath();
         this.ctx.lineWidth = 2;
-        this.ctx.strokeStyle = "rgb(250,250,250)";
+        const alpha = (((this.minVol * -1) + this.osc.volume.value) / 100) + 0.1
+        this.ctx.strokeStyle = `rgba(250,250,250,${alpha})`;
         if (this.isAtBasePitch() && !this.muted) {
-            this.ctx.strokeStyle = "rgb(244,218,104)";
+            this.ctx.strokeStyle = `rgba(244,218,104, ${alpha})`;
         }
 
         let x = 0;
@@ -89,7 +94,7 @@ export class Track {
         const amplitude = ((this.minVol * -1) + this.osc.volume.value);
 
         while (x < width) {
-            y = height / 2 + amplitude * Math.sin(x * this.waveScale * (this.pitch / 70));
+            y = height / 2 + amplitude * Math.sin((x + this.drawOffset) * this.waveScale * (this.pitch / 70));
 
             if (x === 0) {
                 this.ctx.moveTo(x, y);
