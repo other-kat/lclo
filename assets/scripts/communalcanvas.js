@@ -37,6 +37,7 @@ class User {
         this.pid      = serverData['pid']
         this.userIp   = serverData['userIp']
         this.tracks   = serverData['tracks']
+        this.lastSeen = serverData['lastSeen']
     }
 
     draw(ctx) {
@@ -151,6 +152,18 @@ export class CommunalCanvas {
     }
 
 
+    cullUsers() {
+        const now = new Date()
+        this.users = this.users.filter(user => {
+            const lastSeen = new Date(user.lastSeen);
+            const timeDifference = now.getTime() - 3600000 - lastSeen.getTime();
+            console.log(timeDifference)
+
+            const isAlive = timeDifference < 30000;
+
+            return isAlive;
+        });
+    }
 
     createCanvas() {
         this.canvas = document.getElementById('communalCanvas');
@@ -215,10 +228,13 @@ export class CommunalCanvas {
     }
 
     updateUserData(userData) {
+
+
         // takes the response from the server and feeds it into our local understanding.
         // we then need to process this data into the visuals separately.
         for (const user of userData) {
-            const serverData = user[1] // just a stupid annoying quirk of the server side code. dont worry abt it kitten.
+            const serverData = Array(user)[0] // just a stupid annoying quirk of the server side code. dont worry abt it kitten.
+            console.log(serverData)
             const found = this.users.find(user => user.userId === serverData.userId)
             if (!found) {
                 const newUser = new User(this.logicalWidth, this.logicalHeight)
@@ -228,6 +244,7 @@ export class CommunalCanvas {
                 found.updateServerData(serverData)
             }
         }
+        this.cullUsers()
     }
 
     drawUsers() {
