@@ -23,12 +23,17 @@ class User {
         }
         this.logicalWidth = logicalWidth
         this.logicalHeight = logicalHeight
+
+        this.randomTargetOffset = {
+            "x": getRandomArbitrary(-5, 5),
+            "y": getRandomArbitrary(-5, 5)
+        }
+        this.loudestVolume = 0
     }
 
     updateServerData(serverData) {
         this.userId   = serverData['userId']
         this.username = serverData['username']
-        this.vendor   = serverData['vendor']
         this.pid      = serverData['pid']
         this.userIp   = serverData['userIp']
         this.tracks   = serverData['tracks']
@@ -36,37 +41,46 @@ class User {
 
     draw(ctx) {
 
-        // const xOffset = getRandomArbitrary(-0.4,0.4)
-        // const yOffset = getRandomArbitrary(-0.4,0.4)
-        const xOffset = 0
-        const yOffset = 0
-        ctx.font = "9px Courier New";
-        ctx.fillText(`${this.userIp}`, this.pos.x + 5 + xOffset, this.pos.y + 10 + yOffset);
-        ctx.fillText(`${this.username} | p${this.pid}`, this.pos.x + 5 + xOffset, this.pos.y + 17 + yOffset);
+        ctx.font = "8px Courier New";
+        const alpha = (this.loudestVolume / 70) + 0.15
+        ctx.fillStyle = `rgba(255,255,255, ${alpha * 0.7})`
+        ctx.fillText(`${this.userIp}`, this.pos.x + 5, this.pos.y + 10);
+        ctx.fillText(`${this.username}_p${this.pid}`, this.pos.x + 5, this.pos.y + 17);
+        ctx.strokeStyle = `rgba(255,255,255, ${alpha * 0.7})`;
+        ctx.fillStyle = `rgba(255,255,255, ${alpha * 0.3})`
         ctx.beginPath();
-        ctx.arc(this.pos.x + xOffset, this.pos.y + yOffset, 0.9, 0, 2 * Math.PI);
+        ctx.arc(this.pos.x, this.pos.y, 4, 0, 2 * Math.PI);
         ctx.stroke();
-        ctx.fill()
+        ctx.beginPath();
+        ctx.arc(this.pos.x, this.pos.y, 0.4, 0, 2 * Math.PI);
+        ctx.stroke();
     }
     move(centrePoints, ctx) {
         if (!centrePoints) { return; }
         const vectorsByAudio = [];
+        this.loudestVolume = 0
 
         this.tracks.forEach(track =>  {
             const trackPoint = centrePoints[track['bP'] || track['basePitch']];
 
-            const targetX = trackPoint ? trackPoint.x : this.pos.x;
-            const targetY = trackPoint ? trackPoint.y : this.pos.y;
+            const targetX = trackPoint ? trackPoint.x + this.randomTargetOffset.x : this.pos.x;
+            const targetY = trackPoint ? trackPoint.y + this.randomTargetOffset.y : this.pos.y;
 
-            const gravityStrength = 0.000002;
+            const gravityStrength = 0.000004;
 
             const volume =  66 + track['v'];
 
+            if (volume > this.loudestVolume) {this.loudestVolume = volume}
+
+            const xDistance = targetX - this.pos.x
+            const yDistance = targetY - this.pos.y
+
             let force = {
-                "x": (targetX - this.pos.x) * (volume * gravityStrength),
-                "y": (targetY - this.pos.y) * (volume  * gravityStrength),
+                "x": xDistance * (volume * gravityStrength),
+                "y": yDistance * (volume  * gravityStrength),
 
             };
+
 
             if (volume < 2) {
                 force = {'x': 0, "y": 0}
@@ -80,8 +94,8 @@ class User {
 
         let finalForce = { "x": 0, "y": 0 };
         vectorsByAudio.forEach(force => {
-            finalForce.x += force.x;
-            finalForce.y += force.y;
+                finalForce.x += force.x;
+                finalForce.y += force.y;
         });
 
         this.vector.x += finalForce.x;
@@ -89,27 +103,27 @@ class User {
 
         if (this.vector.x * finalForce.x < 0) {
             this.vector.x *= 0.95;
-        } else {this.vector.x *= 0.99}
+        } else {this.vector.x *= 0.98}
 
         if (this.vector.y * finalForce.y < 0) {
             this.vector.y *= 0.95;
-        } else {this.vector.y *= 0.999}
+        } else {this.vector.y *= 0.98}
 
-        if (this.vector.x > 1) {this.vector.x = 1}
-        if (this.vector.y > 1) {this.vector.y = 1}
+        // if (this.vector.x > 1) {this.vector.x = 1}
+        // if (this.vector.y > 1) {this.vector.y = 1}
 
         this.pos.x += this.vector.x;
         this.pos.y += this.vector.y;
 
+        ctx.beginPath();
         vectorsByAudio.forEach(force => {
 
-            ctx.beginPath();
-            ctx.strokeStyle = `rgba(255, 255, 255, 0.23)`;
 
+            ctx.strokeStyle = `rgba(255,255,255, 0.2)`;
             ctx.moveTo(this.pos.x, this.pos.y);
-            ctx.lineTo(this.pos.x + (force.x * 500), this.pos.y + (force.y * 500));
-            ctx.stroke()
+            ctx.lineTo(this.pos.x + (force.x * 300), this.pos.y + (force.y * 300));
         })
+        ctx.stroke()
 
         // Boundary constraints (bounce off the walls or stop at screen edges)
         if (this.pos.x > this.logicalWidth) { this.pos.x = this.logicalWidth; this.vector.x *= -1; }
@@ -133,7 +147,6 @@ export class CommunalCanvas {
 
         this.drawUsers = this.drawUsers.bind(this);
         this.drawUsers()
-
 
     }
 
@@ -175,12 +188,13 @@ export class CommunalCanvas {
 
             this.centrePoints[key] = { x: screenX, y: screenY };
 
-            this.ctx.fillStyle = 'rgba(255,255,255, 0.1)'
+            this.ctx.fillStyle = 'rgba(0,0,0, 0.1)'
             this.ctx.strokeStyle = 'rgba(255,255,255, 0.1)';
 
             this.ctx.beginPath();
             this.ctx.arc(screenX, screenY, multiplier / 10, 0, 2 * Math.PI);
             this.ctx.fill()
+            this.ctx.stroke()
 
         };
     }
@@ -223,8 +237,8 @@ export class CommunalCanvas {
         const positions = []
 
         if (this.centrePoints) {this.drawCentrePoints()}
-        this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.95)';
-        this.ctx.fillStyle = '#ffffff90'
+        this.ctx.strokeStyle = 'rgba(255, 255, 255, 0.99)';
+        this.ctx.fillStyle = '#ffffff99'
         this.users.forEach(user => {
             user.move(this.centrePoints, this.ctx)
             user.draw(this.ctx)
@@ -242,9 +256,9 @@ export class CommunalCanvas {
                 const lineLength = Math.sqrt(dx * dx + dy * dy);
 
                 // Normalize line length: 0px -> 1, 1000px -> 0
-                let normalized = 1 - lineLength / (window.innerHeight * 0.80);
+                let normalized = 1 - lineLength / (window.innerHeight * 0.5);
                 normalized = Math.max(0, normalized); // clamp at 0
-                const transparency = (normalized * 0.4) + getRandomArbitrary(-0.03, 0.03)
+                const transparency = (normalized * 0.3) + getRandomArbitrary(-0.01, 0.01)
 
                 this.ctx.beginPath();
                 this.ctx.strokeStyle = `rgba(255, 255, 255, ${transparency})`;

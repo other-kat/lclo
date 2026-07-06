@@ -18,7 +18,7 @@ export class Track {
         this.varySpeed        = Math.random() * 0.4
         this.osc              = new Tone.Oscillator(pitch, "sine").toDestination();
         this.osc.volume.value = Math.random() < 0.30 ? getRandomInt(-50, -25) : this.minVol;
-        this.waveScale        = 0.006
+        this.waveScale        = 0.005
 
         this.prevVolume       = null
         this.muted            = false
@@ -34,6 +34,7 @@ export class Track {
 
     createCanvas() {
         this.canvas = document.createElement('canvas');
+        this.canvas.draggable = false
         this.ctx    = this.canvas.getContext('2d');
         document.getElementById('waveformContainer').appendChild(this.canvas);
         this.canvas.dataset.basePitch = this.basePitch
@@ -83,7 +84,7 @@ export class Track {
         this.ctx.clearRect(0, 0, width, height);
         this.ctx.beginPath();
         this.ctx.lineWidth = 2;
-        const alpha = (((this.minVol * -1) + this.osc.volume.value) / 100) + 0.1
+        const alpha = (((this.minVol * -1) + this.osc.volume.value) / 105) + 0.1
         this.ctx.strokeStyle = `rgba(250,250,250,${alpha})`;
         if (this.isAtBasePitch() && this.osc.volume.value > -69) {
             this.ctx.strokeStyle = `rgba(244,218,104, ${alpha})`;

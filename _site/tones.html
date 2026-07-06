@@ -17,12 +17,20 @@
         <button id='muteButton'>Mute</button>
         <canvas id='communalCanvas'></canvas>
 
+        <div id='messages'></div>
     </body>
     <style>
     canvas {
         width: 100vw;
         height: 19vh;
         z-index: 100;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+        -khtml-user-select: none; /* Konqueror HTML */
+        -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        user-select: none; /* Non-prefixed version, currently */
+
     }
     #waveformContainer {
         position: relative;
@@ -43,6 +51,7 @@
         margin: 0px;
         background-color: rgb(27,27,27);
         color: white;
+        overflow: hidden
     }
     #notification, #stats {
         position: absolute;
@@ -83,6 +92,11 @@
         font-size: 1em;
         background-color: rgba(30,30,30)
 
+    }
+    #messages {
+        padding: 1em;
+        font-size: 0.5em;
+        color: #ffffff70;
     }
 
     #muteButton:active {

@@ -42,8 +42,9 @@ class soundManager {
         setInterval(() => {
             this.drawStats();
             for (const track of this.tracks) {
-                if (track.varyDirection === -1) {track.drawOffset = track.drawOffset + 0.5}
-                else {track.drawOffset = track.drawOffset - 0.5}
+                // if (track.varyDirection === -1) {track.drawOffset = track.drawOffset + 0.5}
+                // else {track.drawOffset = track.drawOffset - 0.5}
+                track.drawOffset = track.drawOffset - 0.5
             }
         }, 10)
         setInterval(() => {this.sendSoundInfo()}, 2000)
@@ -160,6 +161,7 @@ class soundManager {
         }
 
         const data = JSON.stringify(payload);
+
         xhr.send(data);
 
         // full disclosure - this is sending data back to my server to coordinate. all we're sending
@@ -215,7 +217,7 @@ class soundManager {
         //                     "muted": false,
         //                     "pitch": 412.793545941625,
         //                     "volume": -70
-        //                 },
+        //               },
         //                 {
         //                     "basePitch": 639,
         //                     "muted": false,
