@@ -57,8 +57,9 @@ class soundManager {
         const stats = document.getElementById('stats')
         stats.innerHTML = ''
         for (const track of this.tracks) {
-            const drawYellow = (track.isAtBasePitch() && !track.muted)
-            stats.innerHTML += `<div class='${drawYellow ? 'yellow' : ''}'>${Math.round(track.pitch)}hz | ${track.osc.volume.value.toFixed(0)}</div>`
+            const drawYellow = (track.isAtBasePitch() && track.osc.volume.value > -69)
+            const strikethrough = ((Math.round(track.osc.volume.value) === -70 ))
+            stats.innerHTML += `<div class='${drawYellow ? 'yellow' : ''} ${strikethrough ? 'strikethrough' : ''}'>${Math.round(track.pitch)}hz | ${track.osc.volume.value.toFixed(0)}</div>`
         }
     }
 
@@ -151,9 +152,9 @@ class soundManager {
 
         for (const track of this.tracks) {
             const trackData = {
-                "volume": track.osc.volume.value,
-                "pitch": track.pitch,
-                "basePitch": track.basePitch
+                "v": Math.round(track.osc.volume.value),
+                "p": Math.round(track.pitch),
+                "bP": Math.round(track.basePitch)
             }
             payload['tracks'].push(trackData)
         }

@@ -15,7 +15,7 @@ export class Track {
         this.basePitch        = pitch;
         this.pitch            = pitch + getRandomInt(-20,20);
         this.varyDirection    = Math.random() < 0.5 ? 1 : -1;
-        this.varySpeed        = 0.1
+        this.varySpeed        = Math.random() * 0.4
         this.osc              = new Tone.Oscillator(pitch, "sine").toDestination();
         this.osc.volume.value = Math.random() < 0.30 ? getRandomInt(-50, -25) : this.minVol;
         this.waveScale        = 0.006
@@ -85,7 +85,7 @@ export class Track {
         this.ctx.lineWidth = 2;
         const alpha = (((this.minVol * -1) + this.osc.volume.value) / 100) + 0.1
         this.ctx.strokeStyle = `rgba(250,250,250,${alpha})`;
-        if (this.isAtBasePitch() && !this.muted) {
+        if (this.isAtBasePitch() && this.osc.volume.value > -69) {
             this.ctx.strokeStyle = `rgba(244,218,104, ${alpha})`;
         }
 
