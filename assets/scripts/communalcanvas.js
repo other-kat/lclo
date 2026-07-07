@@ -32,6 +32,7 @@ class User {
     }
 
     updateServerData(serverData) {
+        console.log(serverData)
         this.userId   = serverData['userId']
         this.username = serverData['username']
         this.pid      = serverData['pid']
@@ -62,7 +63,7 @@ class User {
         this.loudestVolume = 0
 
         this.tracks.forEach(track =>  {
-            const trackPoint = centrePoints[track['bP'] || track['basePitch']];
+            const trackPoint = centrePoints[track['bp'] || track['basePitch']];
 
             const targetX = trackPoint ? trackPoint.x + this.randomTargetOffset.x : this.pos.x;
             const targetY = trackPoint ? trackPoint.y + this.randomTargetOffset.y : this.pos.y;
