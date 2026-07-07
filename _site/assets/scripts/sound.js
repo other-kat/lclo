@@ -44,10 +44,10 @@ class soundManager {
             for (const track of this.tracks) {
                 // if (track.varyDirection === -1) {track.drawOffset = track.drawOffset + 0.5}
                 // else {track.drawOffset = track.drawOffset - 0.5}
-                track.drawOffset = track.drawOffset - 0.5
+                track.drawOffset = track.drawOffset - 0.25
             }
         }, 10)
-        setInterval(() => {this.sendSoundInfo()}, 2500)
+        setInterval(() => {this.sendSoundInfo()}, 1500)
         this.addCanvasControls()
 
         this.communalCanvas = new CommunalCanvas()

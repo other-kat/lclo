@@ -9,20 +9,19 @@ function getRandomArbitrary(min, max) {
     return Math.random() * (max - min) + min;
 }
 
-
+let LOGICALWIDTH  = 999 // making these global to serve as placeholders
+let LOGICALHEIGHT = 999
 
 class User {
-    constructor(logicalWidth, logicalHeight) {
+    constructor() {
         this.pos      = {
-            'x': getRandomArbitrary(0,logicalWidth),
-            'y': getRandomArbitrary(0,logicalHeight)
+            'x': getRandomArbitrary(0, LOGICALWIDTH),
+            'y': getRandomArbitrary(0, LOGICALHEIGHT)
         }
         this.vector   = {
             'x': getRandomArbitrary(-0.3,-0.3),
             'y': getRandomArbitrary(-0.3,0.3)
         }
-        this.logicalWidth = logicalWidth
-        this.logicalHeight = logicalHeight
 
         this.randomTargetOffset = {
             "x": getRandomArbitrary(-5, 5),
@@ -103,13 +102,16 @@ class User {
         this.vector.x += finalForce.x;
         this.vector.y += finalForce.y;
 
+        const wrongDirectionDampening = 0.93
+        const rightDirectionDampening = 0.975
+
         if (this.vector.x * finalForce.x < 0) {
-            this.vector.x *= 0.95;
-        } else {this.vector.x *= 0.98}
+            this.vector.x *= wrongDirectionDampening;
+        } else {this.vector.x *= rightDirectionDampening}
 
         if (this.vector.y * finalForce.y < 0) {
-            this.vector.y *= 0.95;
-        } else {this.vector.y *= 0.98}
+            this.vector.y *= wrongDirectionDampening;
+        } else {this.vector.y *= rightDirectionDampening}
 
         // if (this.vector.x > 1) {this.vector.x = 1}
         // if (this.vector.y > 1) {this.vector.y = 1}
@@ -128,9 +130,9 @@ class User {
         ctx.stroke()
 
         // Boundary constraints (bounce off the walls or stop at screen edges)
-        if (this.pos.x > this.logicalWidth) { this.pos.x = this.logicalWidth; this.vector.x *= -1; }
+        if (this.pos.x > LOGICALWIDTH) { this.pos.x = LOGICALWIDTH; this.vector.x *= -1; }
         if (this.pos.x < 0) { this.pos.x = 0; this.vector.x *= -1; }
-        if (this.pos.y > this.logicalHeight) { this.pos.y = this.logicalHeight; this.vector.y *= -1; }
+        if (this.pos.y > LOGICALHEIGHT) { this.pos.y = LOGICALHEIGHT; this.vector.y *= -1; }
         if (this.pos.y < 0) { this.pos.y = 0; this.vector.y *= -1; }
     }
 }
@@ -185,14 +187,14 @@ export class CommunalCanvas {
 
         let multiplier = null;
         let circleScale = 2.1;
-        if (this.logicalWidth < this.logicalHeight) {
-            multiplier = this.logicalWidth / circleScale;
+        if (LOGICALWIDTH < LOGICALHEIGHT) {
+            multiplier = LOGICALWIDTH / circleScale;
         } else {
-            multiplier = this.logicalHeight / circleScale;
+            multiplier = LOGICALHEIGHT / circleScale;
         }
 
-        let translateX = this.logicalWidth / 2;
-        let translateY = this.logicalHeight / 1.9;
+        let translateX = LOGICALWIDTH / 2;
+        let translateY = LOGICALHEIGHT / 1.9;
 
 
         for (const [key, point] of Object.entries(centrePoints)) {
@@ -200,7 +202,12 @@ export class CommunalCanvas {
             const screenX = (point.x * multiplier) + translateX;
             const screenY = (point.y * multiplier) + translateY;
 
-            this.centrePoints[key] = { x: screenX, y: screenY };
+            if (!this.centrePoints[key]) {
+                this.centrePoints[key] = {};
+            }
+
+            this.centrePoints[key]['x'] = screenX;
+            this.centrePoints[key]['y'] = screenY;
 
             this.ctx.fillStyle = 'rgba(0,0,0, 0.1)'
             this.ctx.strokeStyle = 'rgba(255,255,255, 0.1)';
@@ -222,8 +229,8 @@ export class CommunalCanvas {
 
         this.ctx.scale(dpr, dpr);
 
-        this.logicalWidth = rect.width;
-        this.logicalHeight = rect.height;
+        LOGICALWIDTH = rect.width;
+        LOGICALHEIGHT = rect.height;
 
         if (this.centrePoints) {this.drawCentrePoints()}
     }
@@ -238,7 +245,7 @@ export class CommunalCanvas {
             console.log(serverData)
             const found = this.users.find(user => user.userId === serverData.userId)
             if (!found) {
-                const newUser = new User(this.logicalWidth, this.logicalHeight)
+                const newUser = new User(LOGICALWIDTH, LOGICALHEIGHT)
                 newUser.updateServerData(serverData)
                 this.users.push(newUser)
             } else {
@@ -249,8 +256,8 @@ export class CommunalCanvas {
     }
 
     drawUsers() {
-        if (this.ctx && this.logicalWidth && this.logicalHeight) {
-            this.ctx.clearRect(0, 0, this.logicalWidth, this.logicalHeight);
+        if (this.ctx && LOGICALWIDTH && LOGICALHEIGHT) {
+            this.ctx.clearRect(0, 0, LOGICALWIDTH, LOGICALHEIGHT);
         }
         const positions = []
 
@@ -277,9 +284,9 @@ export class CommunalCanvas {
                 // Normalize line length: 0px -> 1, 1000px -> 0
                 // also handle for phones and laptops so they look... kinda similar?
                 if (window.innerHeight > window.innerWidth) {
-                    normalized = 1 - lineLength / (window.innerHeight * 0.7);
+                    normalized = 1 - lineLength / (window.innerHeight * 0.4);
                 } else {
-                    normalized = 1 - lineLength / (window.innerWidth * 0.7);
+                    normalized = 1 - lineLength / (window.innerWidth * 0.4);
                 }
                 normalized = Math.max(0, normalized); // clamp at 0
                 const transparency = (normalized * 0.3) + getRandomArbitrary(-0.01, 0.01)
