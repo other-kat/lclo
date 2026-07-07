@@ -85,6 +85,8 @@ class soundManager {
         const muteButton = document.getElementById('muteButton')
         muteButton.addEventListener('mousedown', () => {this.mute()})
         muteButton.addEventListener('mouseup',   () => {this.unmute()})
+        muteButton.addEventListener('touchstart',   () => {this.mute()})
+        muteButton.addEventListener('touchend',   () => {this.unmute()})
 
     }
 
