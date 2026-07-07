@@ -86,8 +86,8 @@
 
     #mutebuttonstatswrapper {
         position: absolute;
-        top: 2vw;
-        left: 2vw;
+        top: 1vw;
+        left: 1vw;
         z-index: 9999;
         width: fit-content;
     }
@@ -114,6 +114,15 @@
 
     #muteButton:active {
         background-color: #7d0b17;
+    }
+
+    @media (max-width: 768px) {
+
+        #mutebuttonstatswrapper {
+            top: 5vw; /* apple literally suck so much i had to put this carveout in just for them. losing my marbles. */
+            left: 5vw;
+        }
+
     }
     </style>
 </html>
