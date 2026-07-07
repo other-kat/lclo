@@ -273,8 +273,14 @@ export class CommunalCanvas {
                 const dy = positions[i].y - positions[j].y;
                 const lineLength = Math.sqrt(dx * dx + dy * dy);
 
+                let normalised = 0
                 // Normalize line length: 0px -> 1, 1000px -> 0
-                let normalized = 1 - lineLength / (window.innerHeight * 0.5);
+                // also handle for phones and laptops so they look... kinda similar?
+                if (window.innerHeight > window.innerWidth) {
+                    normalized = 1 - lineLength / (window.innerHeight * 0.7);
+                } else {
+                    normalized = 1 - lineLength / (window.innerWidth * 0.7);
+                }
                 normalized = Math.max(0, normalized); // clamp at 0
                 const transparency = (normalized * 0.3) + getRandomArbitrary(-0.01, 0.01)
 
