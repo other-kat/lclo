@@ -273,7 +273,7 @@ export class CommunalCanvas {
                 const dy = positions[i].y - positions[j].y;
                 const lineLength = Math.sqrt(dx * dx + dy * dy);
 
-                let normalised = 0
+                let normalized = 0
                 // Normalize line length: 0px -> 1, 1000px -> 0
                 // also handle for phones and laptops so they look... kinda similar?
                 if (window.innerHeight > window.innerWidth) {
