@@ -13,8 +13,10 @@
         <script src='/assets/scripts/sound.js' type='module'></script>
         <main id='waveformContainer'></main>
         <div id='notification'><div style='width: 100vw; height: 100vh; display: flex; align-items: center; justify-content: center; text-align: center'><div><h1><< Slow Impulse | L.C.L.O.</h1> <br>Click / Tap to begin tones.<br>Drag to change volume & frequency.<br>Protect your hearing, don't use headphones!</div></div></div>
-        <div id='stats'><div style='width: 25vw; height: 25vh; display: flex; align-items: center; justify-content: center'></div></div>
-        <button id='muteButton'>Mute</button>
+        <div id='mutebuttonstatswrapper'>
+            <button id='muteButton'>Mute</button>
+            <div id='stats'><div style='width: 25vw; height: 25vh; display: flex; align-items: center; justify-content: center'></div></div>
+        </div>
         <canvas id='communalCanvas'></canvas>
 
         <div id='messages'></div>
@@ -53,9 +55,12 @@
         color: white;
         overflow: hidden
     }
+    #notification {
+
+        top: 0vh;
+    }
     #notification, #stats {
         position: absolute;
-        top: 0vh;
         z-index: 9999;
         left: 0vw;
 
@@ -69,10 +74,9 @@
 
     #stats {
         display: none;
-        left: 1vw;
-        top: 1vw;
+        width: max-content;
+        margin-top: 1em;
         font-size: 0.7em;
-        padding: 1em;
         color: #ffffff90;
     }
     .yellow {
@@ -80,20 +84,26 @@
         color: rgb(244,218,104)
     }
 
+    #mutebuttonstatswrapper {
+        position: absolute;
+        top: 1vw;
+        left: 1vw;
+        z-index: 9999;
+        width: fit-content;
+    }
     #muteButton {
         all: unset;
         z-index: 9999;
         display: none;
-        position: absolute;
         padding: 1vw;
         cursor: pointer;
-        left: 92vw;
-        width: 4vw;
+        left: 1vw;
         text-align: center;
-        top: 1vw;
-        font-size: 1em;
+        font-size: 10pt;
         background-color: rgba(30,30,30);
         border: 1px solid #ffffff95;
+        top: 1vh;
+        min-height: 3vh;
 
     }
     #messages {
