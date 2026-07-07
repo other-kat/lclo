@@ -47,7 +47,7 @@ class soundManager {
                 track.drawOffset = track.drawOffset - 0.5
             }
         }, 10)
-        setInterval(() => {this.sendSoundInfo()}, 2000)
+        setInterval(() => {this.sendSoundInfo()}, 2500)
         this.addCanvasControls()
 
         this.communalCanvas = new CommunalCanvas()
